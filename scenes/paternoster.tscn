@@ -1,15 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://5i5rod025w8w"]
+[gd_scene load_steps=7 format=3 uid="uid://5i5rod025w8w"]
 
 [ext_resource type="PackedScene" uid="uid://cuye7hlcbwd8t" path="res://blendfiles/paternoster.blend" id="1_af82s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_af82s"]
 size = Vector3(1.50195, 0.2005, 1.901)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0cej"]
+size = Vector3(1.50195, 0.516144, 1.901)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmk0h"]
+size = Vector3(1.95923, 3.02664, 0.50293)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2khh"]
+size = Vector3(0.187378, 2.51807, 1.99048)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t58yl"]
+size = Vector3(0.187378, 2.51807, 1.99707)
+
 [node name="AnimatableBody3D" type="AnimatableBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099823, 0.0574341)
 shape = SubResource("BoxShape3D_af82s")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76234, 0.0574341)
+shape = SubResource("BoxShape3D_b0cej")
 
 [node name="Paternoster" type="Node3D" parent="."]
 
@@ -28,3 +44,15 @@ light_indirect_energy = 2.756
 light_volumetric_fog_energy = 2.476
 omni_range = 2.0
 omni_attenuation = 0.9
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50996, -1.10368)
+shape = SubResource("BoxShape3D_vmk0h")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.814986, 1.28921, 0)
+shape = SubResource("BoxShape3D_t2khh")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.803147, 1.28921, 0)
+shape = SubResource("BoxShape3D_t58yl")

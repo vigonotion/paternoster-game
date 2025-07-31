@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cmiw5rv6wfv1" path="res://scripts/area_wait_for_leave_up.gd" id="7_vef74"]
 [ext_resource type="PackedScene" uid="uid://dk8thf5yov85q" path="res://scenes/hud.tscn" id="8_j5wjh"]
 
-[sub_resource type="Curve3D" id="Curve3D_eow3j"]
+[sub_resource type="Curve3D" id="Curve3D_j5wjh"]
 closed = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -9, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 3, 9, 0, 0, 0, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, 0, 0, 3, -6, 0, 0, 0, 0, 0, 0, 0, 3, -9, 0),
@@ -48,7 +48,7 @@ size = Vector3(2.07617, 4.8978, 3.05112)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
 
 [node name="Paternoster Chain" type="Path3D" parent="."]
-curve = SubResource("Curve3D_eow3j")
+curve = SubResource("Curve3D_j5wjh")
 script = ExtResource("1_feb5d")
 count = 14
 

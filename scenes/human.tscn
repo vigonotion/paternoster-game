@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyxh3ci7mbbtd"]
+[gd_scene load_steps=5 format=3 uid="uid://cyxh3ci7mbbtd"]
 
 [ext_resource type="Script" uid="uid://b43w3ivqdcmdj" path="res://scripts/human.gd" id="1_cwf78"]
 [ext_resource type="PackedScene" uid="uid://dp0o35tb2nvy8" path="res://blendfiles/human.blend" id="1_swaxu"]
+[ext_resource type="PackedScene" uid="uid://d212jcjmkcy3r" path="res://blendfiles/bubble.blend" id="2_4otcn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_swaxu"]
 height = 1.95654
@@ -11,6 +12,9 @@ radius = 0.190918
 mass = 60.0
 lock_rotation = true
 script = ExtResource("1_cwf78")
+
+[node name="Bubble" parent="." instance=ExtResource("2_4otcn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41118, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983634, 0)

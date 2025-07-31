@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwvhrv0g7o16x"]
+[gd_scene load_steps=14 format=3 uid="uid://dwvhrv0g7o16x"]
 
 [ext_resource type="PackedScene" uid="uid://jy20n6gfbpwx" path="res://scenes/floor.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://ckfyww51xguuo" path="res://scripts/paternoster_chain.gd" id="1_feb5d"]
@@ -7,8 +7,9 @@
 [ext_resource type="Script" uid="uid://2mku4ba43lkv" path="res://scripts/area_wait_for_enter_down.gd" id="5_eow3j"]
 [ext_resource type="Script" uid="uid://bgltwncclxbd7" path="res://scripts/area_wait_for_leave_down.gd" id="6_j5wjh"]
 [ext_resource type="Script" uid="uid://cmiw5rv6wfv1" path="res://scripts/area_wait_for_leave_up.gd" id="7_vef74"]
+[ext_resource type="PackedScene" uid="uid://dk8thf5yov85q" path="res://scenes/hud.tscn" id="8_j5wjh"]
 
-[sub_resource type="Curve3D" id="Curve3D_fc0e3"]
+[sub_resource type="Curve3D" id="Curve3D_eow3j"]
 closed = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -9, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 3, 9, 0, 0, 0, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, 0, 0, 3, -6, 0, 0, 0, 0, 0, 0, 0, 3, -9, 0),
@@ -47,7 +48,7 @@ size = Vector3(2.07617, 4.8978, 3.05112)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
 
 [node name="Paternoster Chain" type="Path3D" parent="."]
-curve = SubResource("Curve3D_fc0e3")
+curve = SubResource("Curve3D_eow3j")
 script = ExtResource("1_feb5d")
 count = 14
 
@@ -97,6 +98,11 @@ script = ExtResource("7_vef74")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area Wait For Leave Up"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61086, -0.442819)
 shape = SubResource("BoxShape3D_fc0e3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_j5wjh")]
 
 [connection signal="body_entered" from="Area Wait For Enter Up" to="Area Wait For Enter Up" method="_on_body_entered"]
 [connection signal="body_exited" from="Area Wait For Enter Up" to="Area Wait For Enter Up" method="_on_body_exited"]

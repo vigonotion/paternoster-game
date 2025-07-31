@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dojyoee4262fj"]
+[gd_scene load_steps=3 format=3 uid="uid://cfixndquc2bqw"]
 
 [ext_resource type="Script" uid="uid://rpd70mexpuwd" path="res://scripts/paternoster_chainlink.gd" id="1_wcy6g"]
 [ext_resource type="PackedScene" uid="uid://5i5rod025w8w" path="res://scenes/paternoster.tscn" id="2_w2iqd"]

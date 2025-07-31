@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyxh3ci7mbbtd"]
+
+[ext_resource type="PackedScene" uid="uid://dp0o35tb2nvy8" path="res://blendfiles/human.blend" id="1_swaxu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cwf78"]
+radius = 0.219382
+height = 1.89623
+
+[node name="Human" type="Node3D"]
+
+[node name="human" parent="." instance=ExtResource("1_swaxu")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.961905, 0)
+shape = SubResource("CapsuleShape3D_cwf78")

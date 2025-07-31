@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5i5rod025w8w"]
+
+[ext_resource type="PackedScene" uid="uid://cuye7hlcbwd8t" path="res://blendfiles/paternoster.blend" id="1_af82s"]
+
+[node name="Paternoster" type="Node3D"]
+
+[node name="paternoster" parent="." instance=ExtResource("1_af82s")]

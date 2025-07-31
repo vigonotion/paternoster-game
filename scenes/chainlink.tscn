@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dojyoee4262fj"]
+
+[ext_resource type="Script" uid="uid://rpd70mexpuwd" path="res://scripts/paternoster_chainlink.gd" id="1_wcy6g"]
+[ext_resource type="PackedScene" uid="uid://5i5rod025w8w" path="res://scenes/paternoster.tscn" id="2_w2iqd"]
+
+[node name="Chainlink" type="PathFollow3D"]
+rotation_mode = 0
+script = ExtResource("1_wcy6g")
+
+[node name="Paternoster" parent="." instance=ExtResource("2_w2iqd")]
+transform = Transform3D(1, -1.74846e-07, -8.74228e-08, 1.74846e-07, 1, -1.14641e-14, 8.74228e-08, -3.82137e-15, 1, 0, 0, 0)

@@ -8,4 +8,6 @@ rotation_mode = 0
 script = ExtResource("1_wcy6g")
 
 [node name="Paternoster" parent="." instance=ExtResource("2_w2iqd")]
-transform = Transform3D(1, -1.74846e-07, -8.74228e-08, 1.74846e-07, 1, -1.14641e-14, 8.74228e-08, -3.82137e-15, 1, 0, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../Paternoster")

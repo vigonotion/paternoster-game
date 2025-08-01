@@ -1,13 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwvhrv0g7o16x"]
+[gd_scene load_steps=19 format=3 uid="uid://dwvhrv0g7o16x"]
 
 [ext_resource type="PackedScene" uid="uid://jy20n6gfbpwx" path="res://scenes/floor.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://ckfyww51xguuo" path="res://scripts/paternoster_chain.gd" id="1_feb5d"]
+[ext_resource type="Texture2D" uid="uid://b3hkhhxd8a4bf" path="res://shaders/atari-8-bit-series-gtia-1x.png" id="2_hve3p"]
 [ext_resource type="Script" uid="uid://3yxb633jldbc" path="res://scripts/game_manager.gd" id="2_j5wjh"]
+[ext_resource type="Shader" uid="uid://deqb80vtosivr" path="res://shaders/game.gdshader" id="2_vef74"]
 [ext_resource type="Script" uid="uid://dsd2q45o4ofdj" path="res://scripts/area_wait_for_enter_up.gd" id="4_fc0e3"]
 [ext_resource type="Script" uid="uid://2mku4ba43lkv" path="res://scripts/area_wait_for_enter_down.gd" id="5_eow3j"]
 [ext_resource type="Script" uid="uid://bgltwncclxbd7" path="res://scripts/area_wait_for_leave_down.gd" id="6_j5wjh"]
 [ext_resource type="Script" uid="uid://cmiw5rv6wfv1" path="res://scripts/area_wait_for_leave_up.gd" id="7_vef74"]
 [ext_resource type="PackedScene" uid="uid://dk8thf5yov85q" path="res://scenes/hud.tscn" id="8_j5wjh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
+shader = ExtResource("2_vef74")
+shader_parameter/palette = ExtResource("2_hve3p")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vef74"]
 
 [sub_resource type="Environment" id="Environment_e2o6t"]
 background_mode = 1
@@ -16,11 +24,15 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.22
 tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
 sdfgi_read_sky_light = false
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 0.62
 glow_blend_mode = 0
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.0372
 adjustment_enabled = true
 adjustment_brightness = 1.2
 adjustment_contrast = 1.04
@@ -28,7 +40,7 @@ adjustment_saturation = 1.41
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7jktm"]
 
-[sub_resource type="Curve3D" id="Curve3D_j5wjh"]
+[sub_resource type="Curve3D" id="Curve3D_iotsf"]
 closed = true
 _data = {
 "points": PackedVector3Array(0, -5, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 5, 0, 0, 6, 0, 0, 5, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, -5, 0, 3, -6, 0),
@@ -50,6 +62,21 @@ size = Vector3(2.07617, 4.8978, 3.05112)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer"]
+material = SubResource("ShaderMaterial_hve3p")
+layout_mode = 2
+texture = SubResource("CanvasTexture_vef74")
+expand_mode = 2
+
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("8_j5wjh")]
 
 [node name="GameManager" type="Node" parent="."]
@@ -57,7 +84,7 @@ unique_name_in_owner = true
 script = ExtResource("2_j5wjh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20569, 23.691)
+transform = Transform3D(0.834444, -0.0734289, 0.546179, 3.72529e-09, 0.991084, 0.133242, -0.551093, -0.111183, 0.827004, 3.01112, 2.82295, 7.89757)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e2o6t")
@@ -65,10 +92,9 @@ camera_attributes = SubResource("CameraAttributesPractical_7jktm")
 
 [node name="Floor" parent="." instance=ExtResource("1_e2o6t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
-visible = false
 
 [node name="Paternoster Chain" type="Path3D" parent="."]
-curve = SubResource("Curve3D_j5wjh")
+curve = SubResource("Curve3D_iotsf")
 script = ExtResource("1_feb5d")
 count = 10
 curve_height = 5.0

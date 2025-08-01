@@ -10,8 +10,18 @@ extends RigidBody3D
 
 @onready var raycast: RayCast3D = $Raycast
 
+@onready var model: Node3D = $"Human Node/model"
 
-func _process(delta: float) -> void:	
+func _ready() -> void:
+	var meshinstance = (model.get_child(0) as MeshInstance3D)
+	
+	var newMaterial = StandardMaterial3D.new()
+	newMaterial.albedo_color = Color(randf(), randf(), randf(), 1.0) #Set color of new material
+	
+	meshinstance.material_override = newMaterial
+	
+
+func _process(delta: float) -> void:
 	
 	
 	if (is_waiting_enter_up and Input.is_action_just_pressed("enter_up")) or (is_waiting_enter_down and Input.is_action_just_pressed("enter_down")):

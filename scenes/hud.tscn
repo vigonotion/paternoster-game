@@ -16,18 +16,20 @@ text = "Paternoster Dev.0"
 
 [node name="Label" type="Label" parent="Label"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 192.0
-offset_right = 201.0
-offset_bottom = 215.0
-text = "A --->
-<--- D"
+offset_left = 33.0
+offset_top = 67.0
+offset_right = 172.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 46
+text = "[A] to enter
+[D] to exit"
 
-[node name="Label" type="Label" parent="Label/Label"]
+[node name="Label2" type="Label" parent="Label"]
 layout_mode = 0
-offset_left = 904.0
-offset_top = 14.0
-offset_right = 1043.0
-offset_bottom = 63.0
-text = "J --->
-<--- L"
+offset_left = 872.0
+offset_top = 67.0
+offset_right = 1123.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 46
+text = "[J] to enter
+[L] to exit"

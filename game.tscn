@@ -40,7 +40,7 @@ adjustment_saturation = 1.41
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7jktm"]
 
-[sub_resource type="Curve3D" id="Curve3D_iotsf"]
+[sub_resource type="Curve3D" id="Curve3D_hve3p"]
 closed = true
 _data = {
 "points": PackedVector3Array(0, -5, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 5, 0, 0, 6, 0, 0, 5, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, -5, 0, 3, -6, 0),
@@ -94,7 +94,7 @@ camera_attributes = SubResource("CameraAttributesPractical_7jktm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
 
 [node name="Paternoster Chain" type="Path3D" parent="."]
-curve = SubResource("Curve3D_iotsf")
+curve = SubResource("Curve3D_hve3p")
 script = ExtResource("1_feb5d")
 count = 10
 curve_height = 5.0
@@ -135,10 +135,10 @@ shape = SubResource("BoxShape3D_fc0e3")
 [node name="Spawns" type="Node3D" parent="."]
 
 [node name="Spawn Enter Up" type="Marker3D" parent="Spawns"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32044, 0.01, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32044, 0.01, 10.0899)
 
 [node name="Spawn Enter Down" type="Marker3D" parent="Spawns"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74061, 0.01, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74061, 0.01, 10.0899)
 
 [connection signal="body_entered" from="Areas/Area Wait For Enter Up" to="Areas/Area Wait For Enter Up" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/Area Wait For Enter Up" to="Areas/Area Wait For Enter Up" method="_on_body_exited"]

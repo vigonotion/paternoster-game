@@ -9,7 +9,7 @@ extends Path3D
 const paternoster_height = 3
 
 func _init() -> void:
-	curve = Curve3D.new()
+	curve = Curve3D.new() 
 	var halfcount = count / 2.0
 	var y_offset = -count / 4 * paternoster_height
 	

@@ -31,10 +31,10 @@ adjustment_saturation = 1.41
 [sub_resource type="Curve3D" id="Curve3D_j5wjh"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -9, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 3, 9, 0, 0, 0, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, 0, 0, 3, -6, 0, 0, 0, 0, 0, 0, 0, 3, -9, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, -5, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 5, 0, 0, 6, 0, 0, 5, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, -5, 0, 3, -6, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 14
+point_count = 11
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j5wjh"]
 size = Vector3(2.07617, 3.29333, 0.456276)
@@ -57,7 +57,7 @@ unique_name_in_owner = true
 script = ExtResource("2_j5wjh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.961734, -0.0966862, 0.256358, 0.00116501, 0.9371, 0.34906, -0.273982, -0.335404, 0.901353, 1.85186, 3.49725, 5.4803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20569, 23.691)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e2o6t")
@@ -65,11 +65,13 @@ camera_attributes = SubResource("CameraAttributesPractical_7jktm")
 
 [node name="Floor" parent="." instance=ExtResource("1_e2o6t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
+visible = false
 
 [node name="Paternoster Chain" type="Path3D" parent="."]
 curve = SubResource("Curve3D_j5wjh")
 script = ExtResource("1_feb5d")
-count = 14
+count = 10
+curve_height = 5.0
 
 [node name="Areas" type="Node3D" parent="."]
 

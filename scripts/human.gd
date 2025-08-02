@@ -8,7 +8,7 @@ extends RigidBody3D
 @onready var raycast: RayCast3D = $Raycast
 
 @onready var model: Node3D = $"Human Node/model"
-@onready var debug_label: Label3D = $"Debug Label"
+@onready var label: Label3D = $"Label"
 
 
 signal state_changed(state: STATE)
@@ -28,11 +28,11 @@ enum STATE {
 		state = s
 		state_changed.emit(state)
 		
-		if debug_label:
-			debug_label.text = STATE.keys()[s]
+		if label:
+			set_label()
 
 func _ready() -> void:
-	debug_label.text = STATE.keys()[state]
+	set_label()
 	var meshinstance = (model.get_child(0) as MeshInstance3D)
 	
 	var newMaterial = StandardMaterial3D.new()
@@ -41,6 +41,17 @@ func _ready() -> void:
 	newMaterial.albedo_color.ok_hsl_l = randf_range(0.4, 0.8)
 	meshinstance.material_override = newMaterial
 	
+func set_label():
+	if state == STATE.WAIT_ENTER_UP:
+		label.text = "[A]"
+	elif state == STATE.WAIT_ENTER_DOWN:
+		label.text = "[J]"
+	elif state == STATE.WAIT_EXIT_UP:
+		label.text = "[D]"
+	elif state == STATE.WAIT_EXIT_DOWN:
+		label.text = "[L]"
+	else:
+		label.text = ""
 
 func _process(delta: float) -> void:
 	

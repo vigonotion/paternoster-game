@@ -1,6 +1,9 @@
 class_name Human
 extends RigidBody3D
 
+@onready var game_manager: GameManager = %GameManager
+
+
 @export var is_waiting_enter_up = false
 @export var is_waiting_leave_up = false
 @export var is_waiting_enter_down = false

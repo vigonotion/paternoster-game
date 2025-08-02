@@ -7,10 +7,28 @@ extends Node
 
 @onready var game: Node3D = $".."
 
+signal state_changed(state: STATE)
+
+enum STATE {
+	INIT,
+	START,
+	TUTORIAL_A,
+	TUTORIAL_A_END,
+	TUTORIAL_L,
+	TUTORIAL_DJ,
+	TUTORIAL_END
+}
+
+@export var state: STATE = STATE.INIT:
+	set(s):
+		state = s
+		state_changed.emit(s)
+
 var human_scene
 
 func _init() -> void:
 	human_scene = load("res://scenes/human.tscn")
+	state = STATE.START
 
 func spawn_at(spawn_point: Node3D):
 	print("spawning!", human_scene)
@@ -22,3 +40,16 @@ func spawn_at(spawn_point: Node3D):
 
 func _on_game_ready() -> void:
 	spawn_at(spawn_enter_up_start)
+	state = STATE.START
+
+func human_entered_enter_up() -> void:
+	if state != STATE.START:
+		return
+		
+	state = STATE.TUTORIAL_A
+
+func human_exited_enter_up() -> void:
+	if state != STATE.TUTORIAL_A:
+		return
+		
+	state = STATE.TUTORIAL_A_END

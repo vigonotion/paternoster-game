@@ -27,6 +27,7 @@ enum STATE {
 @export var state: STATE = STATE.INIT:
 	set(s):
 		state = s
+		print("new state:", state)
 		state_changed.emit(s)
 
 var human_scene
@@ -43,12 +44,10 @@ func _process(delta: float) -> void:
 	if will_spawn_inside_up and spawn_inside_up.enabled:
 		game.add_child(will_spawn_inside_up)
 		will_spawn_inside_up = null
-		print("spawned now!")
 	
 	if will_spawn_inside_down and spawn_inside_down.enabled:
 		game.add_child(will_spawn_inside_down)
 		will_spawn_inside_down = null
-		print("spawned now!")
 		
 
 func spawn_at(spawn_point: Node3D, state: Human.STATE):
@@ -58,17 +57,15 @@ func spawn_at(spawn_point: Node3D, state: Human.STATE):
 	
 	if spawn_point == spawn_inside_up:
 		will_spawn_inside_up = human
-		print("will spawn later")
 	elif spawn_point == spawn_inside_down:
 		will_spawn_inside_down = human
-		print("will spawn later")
 	else:
 		game.add_child(human)
 
 
 func _on_game_ready() -> void:
 	spawn_at(spawn_enter_up_start, Human.STATE.ENTERING)
-	spawn_at(spawn_inside_down, Human.STATE.EXITING)
+	
 	state = STATE.START
 
 func human_entered_enter_up() -> void:
@@ -82,3 +79,14 @@ func human_exited_enter_up() -> void:
 		return
 		
 	state = STATE.TUTORIAL_A_END
+
+func human_entered_leave_down() -> void:
+	pass
+func human_exited_leave_down() -> void:
+	if state == STATE.TUTORIAL_L:
+		state = STATE.TUTORIAL_L_END
+
+func _on_state_changed(new_state: GameManager.STATE) -> void:
+	if new_state == STATE.TUTORIAL_A_END:
+		spawn_at(spawn_inside_down, Human.STATE.EXITING)
+		state = STATE.TUTORIAL_L

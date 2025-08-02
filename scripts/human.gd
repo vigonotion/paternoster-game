@@ -41,5 +41,5 @@ func _physics_process(delta: float) -> void:
 	if is_waiting_enter_up or is_waiting_enter_down or is_waiting_leave_up or is_waiting_leave_down:
 		return	
 	
-	if i > 100 and i % 25 == 0:
+	if i % 25 == 0:
 		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))

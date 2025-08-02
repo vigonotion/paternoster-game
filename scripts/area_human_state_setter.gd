@@ -7,6 +7,10 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is not Human:
 		return
 		
+	# ignore state change if already leaving
+	if (body as Human).state == Human.STATE.AUTO_LEAVE:
+		return
+		
 	(body as Human).state = enter_state
 
 func _on_body_exited(body: Node3D) -> void:

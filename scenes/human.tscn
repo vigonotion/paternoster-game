@@ -26,8 +26,12 @@ text = "IDLE"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609001, 0)
 shape = SubResource("CylinderShape3D_swaxu")
 
-[node name="Raycast" type="RayCast3D" parent="."]
+[node name="Raycast Front" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.57718, 0)
+
+[node name="Raycast Back" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.57718, 0)
+target_position = Vector3(0, 1, 0)
 
 [node name="Human Node" type="Node3D" parent="."]
 

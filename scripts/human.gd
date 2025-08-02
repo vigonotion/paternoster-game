@@ -5,7 +5,9 @@ extends RigidBody3D
 
 @onready var bubble: Node3D = $Bubble
 
-@onready var raycast: RayCast3D = $Raycast
+@onready var raycast_front: RayCast3D = $"Raycast Front"
+@onready var raycast_back: RayCast3D = $"Raycast Back"
+
 
 @onready var model: Node3D = $"Human Node/model"
 @onready var label: Label3D = $"Label"
@@ -80,9 +82,6 @@ func _process(delta: float) -> void:
 var i = 0
 func _physics_process(delta: float) -> void:
 	i += 1
-
-	if raycast.is_colliding():
-		return
 		
 	if state == STATE.IDLE:
 		return
@@ -93,9 +92,9 @@ func _physics_process(delta: float) -> void:
 	if i % 25 != 0:
 		return
 
-	if state == STATE.AUTO_QUEUE:	
+	if !raycast_front.is_colliding() and state == STATE.AUTO_QUEUE:	
 		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))
-	elif state == STATE.AUTO_LEAVE:
+	elif !raycast_back.is_colliding() and state == STATE.AUTO_LEAVE:
 		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))
 
 

@@ -10,6 +10,7 @@ extends RigidBody3D
 @onready var model: Node3D = $"Human Node/model"
 @onready var label: Label3D = $"Label"
 
+@onready var jump_block_timer: Timer = $"Jump Block Timer"
 
 signal state_changed(state: STATE)
 
@@ -22,6 +23,8 @@ enum STATE {
 	AUTO_LEAVE,
 	AUTO_QUEUE
 }
+
+var blocked = false
 
 @export var state = STATE.IDLE:
 	set(s):
@@ -52,14 +55,24 @@ func set_label():
 		label.text = "[L]"
 	else:
 		label.text = ""
+		
+	if blocked:
+		label.text = ""
 
 func _process(delta: float) -> void:
-	
-	
+	if !jump_block_timer.is_stopped():
+		return
+
 	if (state == STATE.WAIT_ENTER_UP and Input.is_action_just_pressed("enter_up")) or (state == STATE.WAIT_ENTER_DOWN and Input.is_action_just_pressed("enter_down")):
 		apply_impulse(Vector3(0, 100, -300), Vector3(0, 1, 0))
+		jump_block_timer.start()
+		blocked = true
+		set_label()
 	elif (state == STATE.WAIT_EXIT_DOWN and Input.is_action_just_pressed("leave_down")) or (state == STATE.WAIT_EXIT_UP and Input.is_action_just_pressed("leave_up")):
 		apply_impulse(Vector3(0, 100, 300), Vector3(0, 1, 0))
+		jump_block_timer.start()
+		blocked = true
+		set_label()
 	
 
 var i = 0
@@ -82,3 +95,9 @@ func _physics_process(delta: float) -> void:
 		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))
 	elif state == STATE.AUTO_LEAVE:
 		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))
+
+
+
+func _on_jump_block_timer_timeout() -> void:
+	blocked = false
+	set_label()

@@ -111,3 +111,23 @@ func _on_state_changed(new_state: GameManager.STATE) -> void:
 
 func _on_tutorial_end_timer_timeout() -> void:
 	state = STATE.GAME_PHASE_1
+
+
+
+func _on_spawn_timer_timeout() -> void:
+	if state < STATE.TUTORIAL_END:
+		return
+		
+	var choice = randi_range(0, 4)
+	
+	if choice == 0:
+		spawn_at(spawn_enter_up, Human.STATE.AUTO_QUEUE, "TUTORIAL_A")
+	elif choice == 1:
+		spawn_at(spawn_inside_up, Human.STATE.WAIT_EXIT_UP, "TUTORIAL_DJ_UP")
+	elif choice == 2:
+		spawn_at(spawn_enter_down, Human.STATE.AUTO_QUEUE, "TUTORIAL_DJ_DOWN")
+	elif choice == 3:
+		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
+	else:
+		# spawn-free cycle
+		pass

@@ -117,7 +117,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.834444, -0.0734289, 0.546179, 3.72529e-09, 0.991084, 0.133242, -0.551093, -0.111183, 0.827004, 3.01112, 2.82295, 7.89757)
+transform = Transform3D(0.951487, -0.0409972, 0.304946, 7.82223e-10, 0.991084, 0.133242, -0.307689, -0.126778, 0.943003, 1.40772, 2.82295, 7.89757)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e2o6t")

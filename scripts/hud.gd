@@ -3,6 +3,7 @@ extends Control
 @onready var debug_state: Label = $"Debug State"
 @onready var tutorial_text: RichTextLabel = $"Tutorial Text"
 @onready var key_binds: Control = $"Key Binds"
+@onready var score_label: Label = $Score
 
 
 
@@ -21,3 +22,7 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 		tutorial_text.text = "That's all! You get points for every passenger who reaches their destination. The faster they get there, the more points you get."
 	else:
 		tutorial_text.text = ""
+
+
+func _on_game_manager_score_updated(score: float) -> void:
+	score_label.text = str(score).pad_decimals(2) + " per minute"

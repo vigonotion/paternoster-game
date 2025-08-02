@@ -13,7 +13,13 @@ extends Node
 
 @onready var tutorial_end_timer: Timer = $"Tutorial End Timer"
 
+@export var time_elapsed := 0.0
+@export var transported_successfully := 1
+@export var transported_failures := 1
+@export var score_per_minute := 1.0
+
 signal state_changed(state: STATE)
+signal score_updated(score: float)
 
 enum STATE {
 	INIT,
@@ -52,12 +58,16 @@ func _process(delta: float) -> void:
 		game.add_child(will_spawn_inside_down)
 		will_spawn_inside_down = null
 		
+	if state == STATE.GAME_PHASE_1:
+		time_elapsed += delta
+		
+		score_per_minute = (transported_successfully * 10 - transported_failures) / time_elapsed
 
 func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	var human: Human = human_scene.instantiate()
 	human.position = spawn_point.position
 	human.state = state
-	human.name = id
+	human.id = id
 	
 	human.state_changed.connect(on_human_state_changed)
 	
@@ -84,7 +94,7 @@ func on_human_state_changed(human: Human.STATE):
 	if state == STATE.TUTORIAL_L and human == Human.STATE.AUTO_LEAVE:
 		state = STATE.TUTORIAL_L_END
 
-func human_will_despawn(id: String) -> void:
+func human_will_despawn(id: String, area_id: String) -> void:
 	if state == STATE.TUTORIAL_L and id == "TUTORIAL_L":
 		# they did not successfully jump out
 		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
@@ -96,6 +106,17 @@ func human_will_despawn(id: String) -> void:
 	if state == STATE.TUTORIAL_DJ and id == "TUTORIAL_DJ_DOWN":
 		state = STATE.TUTORIAL_END
 		tutorial_end_timer.start()
+		
+	if state == STATE.GAME_PHASE_1:
+		
+		if id == "LOOP_ENTER_UP" and area_id == "up":
+			transported_successfully += 1
+		elif id == "LOOP_ENTER_DOWN" and area_id == "down":
+			transported_successfully += 1
+		elif (id == "LOOP_EXIT_UP" or id == "LOOP_EXIT_DOWN") and area_id == "floor":
+			transported_successfully += 1
+		else:
+			transported_failures += 1
 
 func _on_state_changed(new_state: GameManager.STATE) -> void:
 	if new_state == STATE.TUTORIAL_A_END:
@@ -121,13 +142,18 @@ func _on_spawn_timer_timeout() -> void:
 	var choice = randi_range(0, 4)
 	
 	if choice == 0:
-		spawn_at(spawn_enter_up, Human.STATE.AUTO_QUEUE, "TUTORIAL_A")
+		spawn_at(spawn_enter_up, Human.STATE.AUTO_QUEUE, "LOOP_ENTER_UP")
 	elif choice == 1:
-		spawn_at(spawn_inside_up, Human.STATE.WAIT_EXIT_UP, "TUTORIAL_DJ_UP")
+		spawn_at(spawn_inside_up, Human.STATE.WAIT_EXIT_UP, "LOOP_EXIT_UP")
 	elif choice == 2:
-		spawn_at(spawn_enter_down, Human.STATE.AUTO_QUEUE, "TUTORIAL_DJ_DOWN")
+		spawn_at(spawn_enter_down, Human.STATE.AUTO_QUEUE, "LOOP_ENTER_DOWN")
 	elif choice == 3:
-		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
+		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "LOOP_EXIT_DOWN")
 	else:
 		# spawn-free cycle
 		pass
+
+
+
+func _on_score_timer_timeout() -> void:
+	score_updated.emit(score_per_minute)

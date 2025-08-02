@@ -12,6 +12,8 @@ extends RigidBody3D
 
 @onready var jump_block_timer: Timer = $"Jump Block Timer"
 
+@export var id: String
+
 signal state_changed(state: STATE)
 
 enum STATE {

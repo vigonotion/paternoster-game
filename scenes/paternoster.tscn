@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://5i5rod025w8w"]
+[gd_scene load_steps=9 format=3 uid="uid://5i5rod025w8w"]
 
 [ext_resource type="PackedScene" uid="uid://cuye7hlcbwd8t" path="res://blendfiles/paternoster.blend" id="1_af82s"]
+[ext_resource type="Script" uid="uid://djke8oc1oht24" path="res://scripts/spawnable.gd" id="2_vmk0h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_af82s"]
 size = Vector3(1.50195, 0.2005, 1.901)
@@ -16,6 +17,9 @@ size = Vector3(0.187378, 2.51807, 1.99048)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t58yl"]
 size = Vector3(0.187378, 2.51807, 1.99707)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u88we"]
+size = Vector3(1.35352, 1.07178, 1.89307)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D"]
 
@@ -56,3 +60,14 @@ shape = SubResource("BoxShape3D_t2khh")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.803147, 1.28921, 0)
 shape = SubResource("BoxShape3D_t58yl")
+
+[node name="Spawnable" type="Area3D" parent="."]
+script = ExtResource("2_vmk0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawnable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774505, 0.0153809)
+shape = SubResource("BoxShape3D_u88we")
+debug_color = Color(0.859631, 0.000685574, 0.8766, 0.42)
+
+[connection signal="body_entered" from="Spawnable" to="Spawnable" method="_on_body_entered"]
+[connection signal="body_exited" from="Spawnable" to="Spawnable" method="_on_body_exited"]

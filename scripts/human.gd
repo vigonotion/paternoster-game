@@ -3,27 +3,36 @@ extends RigidBody3D
 
 @onready var game_manager: GameManager = %GameManager
 
-
-@export var is_waiting_enter_up = false
-@export var is_waiting_leave_up = false
-@export var is_waiting_enter_down = false
-@export var is_waiting_leave_down = false
-
 @onready var bubble: Node3D = $Bubble
 
 @onready var raycast: RayCast3D = $Raycast
 
 @onready var model: Node3D = $"Human Node/model"
+@onready var debug_label: Label3D = $"Debug Label"
+
+
+signal state_changed(state: STATE)
 
 enum STATE {
 	IDLE,
-	ENTERING,
-	EXITING
+	WAIT_ENTER_UP,
+	WAIT_ENTER_DOWN,
+	WAIT_EXIT_UP,
+	WAIT_EXIT_DOWN,
+	AUTO_LEAVE,
+	AUTO_QUEUE
 }
 
-@export var state = STATE.IDLE
+@export var state = STATE.IDLE:
+	set(s):
+		state = s
+		state_changed.emit(state)
+		
+		if debug_label:
+			debug_label.text = STATE.keys()[s]
 
 func _ready() -> void:
+	debug_label.text = STATE.keys()[state]
 	var meshinstance = (model.get_child(0) as MeshInstance3D)
 	
 	var newMaterial = StandardMaterial3D.new()
@@ -36,9 +45,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	
-	if (is_waiting_enter_up and Input.is_action_just_pressed("enter_up")) or (is_waiting_enter_down and Input.is_action_just_pressed("enter_down")):
+	if (state == STATE.WAIT_ENTER_UP and Input.is_action_just_pressed("enter_up")) or (state == STATE.WAIT_ENTER_DOWN and Input.is_action_just_pressed("enter_down")):
 		apply_impulse(Vector3(0, 100, -300), Vector3(0, 1, 0))
-	elif (is_waiting_leave_down and Input.is_action_just_pressed("leave_down")) or (is_waiting_leave_up and Input.is_action_just_pressed("leave_up")):
+	elif (state == STATE.WAIT_EXIT_DOWN and Input.is_action_just_pressed("leave_down")) or (state == STATE.WAIT_EXIT_UP and Input.is_action_just_pressed("leave_up")):
 		apply_impulse(Vector3(0, 100, 300), Vector3(0, 1, 0))
 	
 
@@ -52,13 +61,13 @@ func _physics_process(delta: float) -> void:
 	if state == STATE.IDLE:
 		return
 	
-	if is_waiting_enter_up or is_waiting_enter_down or is_waiting_leave_up or is_waiting_leave_down:
+	if state == STATE.WAIT_ENTER_UP or state == STATE.WAIT_ENTER_DOWN or state == STATE.WAIT_EXIT_UP or state == STATE.WAIT_EXIT_DOWN:
 		return	
 	
 	if i % 25 != 0:
 		return
 
-	if state == STATE.ENTERING:	
+	if state == STATE.AUTO_QUEUE:	
 		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))
-	else:
+	elif state == STATE.AUTO_LEAVE:
 		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))

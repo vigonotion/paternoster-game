@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://jy20n6gfbpwx"]
+[gd_scene load_steps=9 format=3 uid="uid://jy20n6gfbpwx"]
 
 [ext_resource type="PackedScene" uid="uid://co7r080a1u20x" path="res://blendfiles/floor.blend" id="1_ukw5w"]
 
@@ -14,32 +14,66 @@ size = Vector3(1.51123, 136.01, 0.251137)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3lc0u"]
 size = Vector3(12.9102, 8.90967, 0.251137)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7525o"]
+size = Vector3(2.5191, 4.37012, 10.5059)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_poy5y"]
+size = Vector3(1.55688, 4.37012, 10.5059)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bx2v"]
+size = Vector3(0.0250244, 4.37012, 10.5059)
+
 [node name="Floor" type="Node3D"]
 
 [node name="floor" parent="." instance=ExtResource("1_ukw5w")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Floor" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12152, -0.25, 4.87373)
 shape = SubResource("BoxShape3D_ukw5w")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Ceiling" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12152, 4.30799, 4.87373)
 shape = SubResource("BoxShape3D_ukw5w")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Wall" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.62146, -0.142365, -0.124801)
 shape = SubResource("BoxShape3D_kuqtn")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Wall2" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135444, -0.142365, -0.124801)
 shape = SubResource("BoxShape3D_kuqtn")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Wall3" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24858, -0.142365, -0.124801)
 shape = SubResource("BoxShape3D_whr1e")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Wall4" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24858, 7.26096, -0.124801)
 shape = SubResource("BoxShape3D_3lc0u")
+
+[node name="Corridor" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.759552, 1.97794, 4.75293)
+shape = SubResource("BoxShape3D_7525o")
+debug_color = Color(0, 0.650602, 0.0814695, 0.42)
+
+[node name="Corridor2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75321, 1.97794, 4.75293)
+shape = SubResource("BoxShape3D_7525o")
+debug_color = Color(0, 0.650602, 0.0814695, 0.42)
+
+[node name="Corridor3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25135, 1.97794, 4.75293)
+shape = SubResource("BoxShape3D_poy5y")
+debug_color = Color(0, 0.650602, 0.0814695, 0.42)
+
+[node name="Divider" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73701, 1.97794, 4.75293)
+shape = SubResource("BoxShape3D_1bx2v")
+debug_color = Color(0, 0.650602, 0.0814695, 0.42)
+
+[node name="Divider2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75105, 1.97794, 4.75293)
+shape = SubResource("BoxShape3D_1bx2v")
+debug_color = Color(0, 0.650602, 0.0814695, 0.42)

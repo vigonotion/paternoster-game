@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwvhrv0g7o16x"]
+[gd_scene load_steps=24 format=3 uid="uid://dwvhrv0g7o16x"]
 
 [ext_resource type="PackedScene" uid="uid://jy20n6gfbpwx" path="res://scenes/floor.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://ckfyww51xguuo" path="res://scripts/paternoster_chain.gd" id="1_feb5d"]
@@ -7,9 +7,9 @@
 [ext_resource type="Shader" uid="uid://deqb80vtosivr" path="res://shaders/game.gdshader" id="2_vef74"]
 [ext_resource type="Script" uid="uid://dsd2q45o4ofdj" path="res://scripts/area_wait_for_enter_up.gd" id="4_fc0e3"]
 [ext_resource type="Script" uid="uid://bug5du6rqxtxh" path="res://scripts/hud.gd" id="4_mfdv2"]
-[ext_resource type="Script" path="res://scripts/area_wait_for_enter_down.gd" id="5_eow3j"]
-[ext_resource type="Script" path="res://scripts/area_wait_for_leave_down.gd" id="6_j5wjh"]
-[ext_resource type="Script" path="res://scripts/area_wait_for_leave_up.gd" id="7_vef74"]
+[ext_resource type="Script" uid="uid://2mku4ba43lkv" path="res://scripts/area_wait_for_enter_down.gd" id="5_eow3j"]
+[ext_resource type="Script" uid="uid://bgltwncclxbd7" path="res://scripts/area_wait_for_leave_down.gd" id="6_j5wjh"]
+[ext_resource type="Script" uid="uid://cmiw5rv6wfv1" path="res://scripts/area_wait_for_leave_up.gd" id="7_vef74"]
 [ext_resource type="PackedScene" uid="uid://b7kawna85o6xt" path="res://scenes/despawn_area.tscn" id="8_iotsf"]
 [ext_resource type="PackedScene" uid="uid://dk8thf5yov85q" path="res://scenes/hud.tscn" id="8_j5wjh"]
 
@@ -42,7 +42,7 @@ adjustment_saturation = 1.41
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7jktm"]
 
-[sub_resource type="Curve3D" id="Curve3D_lc2xo"]
+[sub_resource type="Curve3D" id="Curve3D_iotsf"]
 closed = true
 _data = {
 "points": PackedVector3Array(0, -5, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 5, 0, 0, 6, 0, 0, 5, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, -5, 0, 3, -6, 0),
@@ -55,6 +55,9 @@ size = Vector3(2.53735, 3.38049, 6.46118)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iotsf"]
 size = Vector3(2.53735, 3.38049, 6.46118)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lc2xo"]
+size = Vector3(11.9802, 26.9364, 7.26965)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j5wjh"]
 size = Vector3(2.07617, 3.29333, 0.456276)
@@ -103,76 +106,87 @@ camera_attributes = SubResource("CameraAttributesPractical_7jktm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
 
 [node name="Paternoster Chain" type="Path3D" parent="."]
-curve = SubResource("Curve3D_lc2xo")
+curve = SubResource("Curve3D_iotsf")
 script = ExtResource("1_feb5d")
 count = 10
 curve_height = 5.0
 
 [node name="Areas" type="Node3D" parent="."]
 
-[node name="Despawn Up" parent="Areas" instance=ExtResource("8_iotsf")]
+[node name="Despawn Areas" type="Node3D" parent="Areas"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Despawn Up"]
+[node name="Despawn Up" parent="Areas/Despawn Areas" instance=ExtResource("8_iotsf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Despawn Areas/Despawn Up"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.86005, -1.30823)
 shape = SubResource("BoxShape3D_215e1")
 debug_color = Color(0.983341, 0, 0.35393, 0.42)
 
-[node name="Despawn Down" parent="Areas" instance=ExtResource("8_iotsf")]
+[node name="Despawn Down" parent="Areas/Despawn Areas" instance=ExtResource("8_iotsf")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Despawn Down"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Despawn Areas/Despawn Down"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09734, -4.42667, -1.30823)
 shape = SubResource("BoxShape3D_iotsf")
 debug_color = Color(0.983341, 0, 0.35393, 0.42)
 
-[node name="Area Wait For Enter Up" type="Area3D" parent="Areas"]
+[node name="Despawn Behind" parent="Areas/Despawn Areas" instance=ExtResource("8_iotsf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Despawn Areas/Despawn Behind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05227, -4.95667, 14.6579)
+shape = SubResource("BoxShape3D_lc2xo")
+debug_color = Color(0.983341, 0, 0.35393, 0.42)
+
+[node name="Wait Areas" type="Node3D" parent="Areas"]
+
+[node name="Area Wait For Enter Up" type="Area3D" parent="Areas/Wait Areas"]
 script = ExtResource("4_fc0e3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area Wait For Enter Up"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Wait Areas/Area Wait For Enter Up"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59735, 1.49718)
 shape = SubResource("BoxShape3D_j5wjh")
 
-[node name="Area Wait For Enter Down" type="Area3D" parent="Areas"]
+[node name="Area Wait For Enter Down" type="Area3D" parent="Areas/Wait Areas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05061, 0, 0)
 script = ExtResource("5_eow3j")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area Wait For Enter Down"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Wait Areas/Area Wait For Enter Down"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59735, 1.52644)
 shape = SubResource("BoxShape3D_feb5d")
 
-[node name="Area Wait For Leave Down" type="Area3D" parent="Areas"]
+[node name="Area Wait For Leave Down" type="Area3D" parent="Areas/Wait Areas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05061, 0, 0)
 script = ExtResource("6_j5wjh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area Wait For Leave Down"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Wait Areas/Area Wait For Leave Down"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61086, -0.442819)
 shape = SubResource("BoxShape3D_fc0e3")
 
-[node name="Area Wait For Leave Up" type="Area3D" parent="Areas"]
+[node name="Area Wait For Leave Up" type="Area3D" parent="Areas/Wait Areas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00174212, 0, 0)
 script = ExtResource("7_vef74")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area Wait For Leave Up"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Wait Areas/Area Wait For Leave Up"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61086, -0.442819)
 shape = SubResource("BoxShape3D_fc0e3")
 
 [node name="Spawns" type="Node3D" parent="."]
 
 [node name="Spawn Enter Up" type="Marker3D" parent="Spawns"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32044, 0.01, 10.0899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.384846, 0.01, 10.0899)
 
 [node name="Spawn Enter Up Start" type="Marker3D" parent="Spawns"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32044, 0.01, 2.80068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.384846, 0.01, 2.80068)
 
 [node name="Spawn Enter Down" type="Marker3D" parent="Spawns"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74061, 0.01, 10.0899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61717, 0.01, 10.0899)
 
 [connection signal="ready" from="." to="GameManager" method="_on_game_ready"]
 [connection signal="state_changed" from="GameManager" to="CanvasLayer/HUD" method="_on_game_manager_state_changed"]
-[connection signal="body_entered" from="Areas/Area Wait For Enter Up" to="Areas/Area Wait For Enter Up" method="_on_body_entered"]
-[connection signal="body_exited" from="Areas/Area Wait For Enter Up" to="Areas/Area Wait For Enter Up" method="_on_body_exited"]
-[connection signal="body_entered" from="Areas/Area Wait For Enter Down" to="Areas/Area Wait For Enter Down" method="_on_body_entered"]
-[connection signal="body_exited" from="Areas/Area Wait For Enter Down" to="Areas/Area Wait For Enter Down" method="_on_body_exited"]
-[connection signal="body_entered" from="Areas/Area Wait For Leave Down" to="Areas/Area Wait For Leave Down" method="_on_body_entered"]
-[connection signal="body_exited" from="Areas/Area Wait For Leave Down" to="Areas/Area Wait For Leave Down" method="_on_body_exited"]
-[connection signal="body_entered" from="Areas/Area Wait For Leave Up" to="Areas/Area Wait For Leave Up" method="_on_body_entered"]
-[connection signal="body_exited" from="Areas/Area Wait For Leave Up" to="Areas/Area Wait For Leave Up" method="_on_body_exited"]
+[connection signal="body_entered" from="Areas/Wait Areas/Area Wait For Enter Up" to="Areas/Wait Areas/Area Wait For Enter Up" method="_on_body_entered"]
+[connection signal="body_exited" from="Areas/Wait Areas/Area Wait For Enter Up" to="Areas/Wait Areas/Area Wait For Enter Up" method="_on_body_exited"]
+[connection signal="body_entered" from="Areas/Wait Areas/Area Wait For Enter Down" to="Areas/Wait Areas/Area Wait For Enter Down" method="_on_body_entered"]
+[connection signal="body_exited" from="Areas/Wait Areas/Area Wait For Enter Down" to="Areas/Wait Areas/Area Wait For Enter Down" method="_on_body_exited"]
+[connection signal="body_entered" from="Areas/Wait Areas/Area Wait For Leave Down" to="Areas/Wait Areas/Area Wait For Leave Down" method="_on_body_entered"]
+[connection signal="body_exited" from="Areas/Wait Areas/Area Wait For Leave Down" to="Areas/Wait Areas/Area Wait For Leave Down" method="_on_body_exited"]
+[connection signal="body_entered" from="Areas/Wait Areas/Area Wait For Leave Up" to="Areas/Wait Areas/Area Wait For Leave Up" method="_on_body_entered"]
+[connection signal="body_exited" from="Areas/Wait Areas/Area Wait For Leave Up" to="Areas/Wait Areas/Area Wait For Leave Up" method="_on_body_exited"]

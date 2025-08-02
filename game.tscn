@@ -108,6 +108,9 @@ script = ExtResource("4_mfdv2")
 unique_name_in_owner = true
 script = ExtResource("2_j5wjh")
 
+[node name="Tutorial End Timer" type="Timer" parent="GameManager"]
+wait_time = 5.0
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.834444, -0.0734289, 0.546179, 3.72529e-09, 0.991084, 0.133242, -0.551093, -0.111183, 0.827004, 3.01112, 2.82295, 7.89757)
 
@@ -251,6 +254,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61717, 0.01, 10.0899)
 [connection signal="ready" from="." to="GameManager" method="_on_game_ready"]
 [connection signal="state_changed" from="GameManager" to="CanvasLayer/HUD" method="_on_game_manager_state_changed"]
 [connection signal="state_changed" from="GameManager" to="GameManager" method="_on_state_changed"]
+[connection signal="timeout" from="GameManager/Tutorial End Timer" to="GameManager" method="_on_tutorial_end_timer_timeout"]
 [connection signal="body_entered" from="Areas/Wait Areas/Area Wait For Enter Up" to="Areas/Wait Areas/Area Wait For Enter Up" method="_on_body_entered"]
 [connection signal="body_exited" from="Areas/Wait Areas/Area Wait For Enter Up" to="Areas/Wait Areas/Area Wait For Enter Up" method="_on_body_exited"]
 [connection signal="body_entered" from="Areas/Wait Areas/Area Up Auto Leave" to="Areas/Wait Areas/Area Up Auto Leave" method="_on_body_entered"]

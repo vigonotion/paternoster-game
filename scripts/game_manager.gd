@@ -11,6 +11,8 @@ extends Node
 
 @onready var game: Node3D = $".."
 
+@onready var tutorial_end_timer: Timer = $"Tutorial End Timer"
+
 signal state_changed(state: STATE)
 
 enum STATE {
@@ -21,7 +23,8 @@ enum STATE {
 	TUTORIAL_L,
 	TUTORIAL_L_END,
 	TUTORIAL_DJ,
-	TUTORIAL_END
+	TUTORIAL_END,
+	GAME_PHASE_1
 }
 
 @export var state: STATE = STATE.INIT:
@@ -92,6 +95,7 @@ func human_will_despawn(id: String) -> void:
 		
 	if state == STATE.TUTORIAL_DJ and id == "TUTORIAL_DJ_DOWN":
 		state = STATE.TUTORIAL_END
+		tutorial_end_timer.start()
 
 func _on_state_changed(new_state: GameManager.STATE) -> void:
 	if new_state == STATE.TUTORIAL_A_END:
@@ -102,3 +106,8 @@ func _on_state_changed(new_state: GameManager.STATE) -> void:
 		state = STATE.TUTORIAL_DJ
 		spawn_at(spawn_inside_up, Human.STATE.WAIT_EXIT_UP, "TUTORIAL_DJ_UP")
 		spawn_at(spawn_enter_down, Human.STATE.AUTO_QUEUE, "TUTORIAL_DJ_DOWN")
+
+
+
+func _on_tutorial_end_timer_timeout() -> void:
+	state = STATE.GAME_PHASE_1

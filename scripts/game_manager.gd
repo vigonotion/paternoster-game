@@ -58,6 +58,9 @@ func _process(delta: float) -> void:
 		game.add_child(will_spawn_inside_down)
 		will_spawn_inside_down = null
 		
+	if state < STATE.GAME_PHASE_1 and Input.is_action_just_pressed("skip_tutorial"):
+		state = STATE.GAME_PHASE_1
+		
 	if state == STATE.GAME_PHASE_1:
 		time_elapsed += delta
 		

@@ -86,7 +86,19 @@ func human_will_despawn(id: String) -> void:
 		# they did not successfully jump out
 		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
 
+	if state == STATE.TUTORIAL_DJ and id == "TUTORIAL_DJ_UP":
+		# they did not successfully jump out
+		spawn_at(spawn_inside_up, Human.STATE.WAIT_EXIT_UP, "TUTORIAL_DJ_UP")
+		
+	if state == STATE.TUTORIAL_DJ and id == "TUTORIAL_DJ_DOWN":
+		state = STATE.TUTORIAL_END
+
 func _on_state_changed(new_state: GameManager.STATE) -> void:
 	if new_state == STATE.TUTORIAL_A_END:
-		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
 		state = STATE.TUTORIAL_L
+		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
+		
+	if new_state == STATE.TUTORIAL_L_END:
+		state = STATE.TUTORIAL_DJ
+		spawn_at(spawn_inside_up, Human.STATE.WAIT_EXIT_UP, "TUTORIAL_DJ_UP")
+		spawn_at(spawn_enter_down, Human.STATE.AUTO_QUEUE, "TUTORIAL_DJ_DOWN")

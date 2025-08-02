@@ -15,5 +15,7 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 		tutorial_text.text = "Press [A] if you think it's time to hop into the paternoster."
 	elif state == GameManager.STATE.TUTORIAL_L:
 		tutorial_text.text = "You did it! Now, press [L] if you think it's time to hop out of the paternoster."
+	elif state == GameManager.STATE.TUTORIAL_DJ:
+		tutorial_text.text = "Just two keys more to learn: Press [D] to jump out of the left paternoster, and [J] to hop into the right one."
 	else:
 		tutorial_text.text = ""

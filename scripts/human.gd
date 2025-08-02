@@ -14,6 +14,10 @@ extends RigidBody3D
 
 @onready var jump_timer: Timer = $"Jump Timer"
 
+@onready var jump_sfx: AudioStreamPlayer3D = $"Jump Sfx"
+@onready var jump_long_sfx: AudioStreamPlayer3D = $"Jump Long Sfx"
+
+
 
 @export var id: String
 
@@ -71,11 +75,13 @@ func _process(delta: float) -> void:
 
 	if (state == STATE.WAIT_ENTER_UP and Input.is_action_just_pressed("enter_up")) or (state == STATE.WAIT_ENTER_DOWN and Input.is_action_just_pressed("enter_down")):
 		apply_impulse(Vector3(0, 100, -300), Vector3(0, 1, 0))
+		jump_long_sfx.play()
 		jump_block_timer.start()
 		blocked = true
 		set_label()
 	elif (state == STATE.WAIT_EXIT_DOWN and Input.is_action_just_pressed("leave_down")) or (state == STATE.WAIT_EXIT_UP and Input.is_action_just_pressed("leave_up")):
 		apply_impulse(Vector3(0, 100, 300), Vector3(0, 1, 0))
+		jump_long_sfx.play()
 		jump_block_timer.start()
 		blocked = true
 		set_label()
@@ -107,5 +113,7 @@ func _on_game_over_timer_timeout() -> void:
 func _on_jump_timer_timeout() -> void:
 	if !raycast_front.is_colliding() and state == STATE.AUTO_QUEUE:	
 		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))
+		jump_sfx.play()
 	elif !raycast_back.is_colliding() and state == STATE.AUTO_LEAVE:
 		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))
+		jump_sfx.play()

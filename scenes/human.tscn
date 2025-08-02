@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bknegj0q74oa4"]
+[gd_scene load_steps=6 format=3 uid="uid://bknegj0q74oa4"]
 
 [ext_resource type="Script" uid="uid://b43w3ivqdcmdj" path="res://scripts/human.gd" id="1_cwf78"]
 [ext_resource type="PackedScene" uid="uid://dp0o35tb2nvy8" path="res://blendfiles/human.blend" id="1_swaxu"]
+[ext_resource type="AudioStream" uid="uid://dybfae4fe7uri" path="res://sfx/jump.wav" id="3_4otcn"]
+[ext_resource type="AudioStream" uid="uid://b3qosuu7841sq" path="res://sfx/jump_long.wav" id="4_mayv3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_swaxu"]
 height = 1.20727
@@ -44,8 +46,16 @@ autostart = true
 
 [node name="Jump Timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 0.5
+wait_time = 0.4
 autostart = true
+
+[node name="Jump Sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_4otcn")
+volume_db = -24.767
+
+[node name="Jump Long Sfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_mayv3")
+volume_db = -12.76
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

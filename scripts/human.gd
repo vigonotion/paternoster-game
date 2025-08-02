@@ -15,6 +15,14 @@ extends RigidBody3D
 
 @onready var model: Node3D = $"Human Node/model"
 
+enum STATE {
+	IDLE,
+	ENTERING,
+	EXITING
+}
+
+@export var state = STATE.IDLE
+
 func _ready() -> void:
 	var meshinstance = (model.get_child(0) as MeshInstance3D)
 	
@@ -40,9 +48,17 @@ func _physics_process(delta: float) -> void:
 
 	if raycast.is_colliding():
 		return
+		
+	if state == STATE.IDLE:
+		return
 	
 	if is_waiting_enter_up or is_waiting_enter_down or is_waiting_leave_up or is_waiting_leave_down:
 		return	
 	
-	if i % 25 == 0:
+	if i % 25 != 0:
+		return
+
+	if state == STATE.ENTERING:	
 		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))
+	else:
+		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))

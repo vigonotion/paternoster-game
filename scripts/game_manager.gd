@@ -15,6 +15,7 @@ enum STATE {
 	TUTORIAL_A,
 	TUTORIAL_A_END,
 	TUTORIAL_L,
+	TUTORIAL_L_END,
 	TUTORIAL_DJ,
 	TUTORIAL_END
 }
@@ -30,16 +31,16 @@ func _init() -> void:
 	human_scene = load("res://scenes/human.tscn")
 	state = STATE.START
 
-func spawn_at(spawn_point: Node3D):
+func spawn_at(spawn_point: Node3D, state: Human.STATE):
 	print("spawning!", human_scene)
-	var human: Node3D = human_scene.instantiate()
+	var human: Human = human_scene.instantiate()
 	human.position = spawn_point.position
-	human.name = "HUMAN SPAWNED"
+	human.state = state	
 	game.add_child(human)
 
 
 func _on_game_ready() -> void:
-	spawn_at(spawn_enter_up_start)
+	spawn_at(spawn_enter_up_start, Human.STATE.ENTERING)
 	state = STATE.START
 
 func human_entered_enter_up() -> void:

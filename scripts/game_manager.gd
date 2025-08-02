@@ -50,10 +50,11 @@ func _process(delta: float) -> void:
 		will_spawn_inside_down = null
 		
 
-func spawn_at(spawn_point: Node3D, state: Human.STATE):
+func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	var human: Human = human_scene.instantiate()
 	human.position = spawn_point.position
 	human.state = state
+	human.name = id
 	
 	human.state_changed.connect(on_human_state_changed)
 	
@@ -66,7 +67,7 @@ func spawn_at(spawn_point: Node3D, state: Human.STATE):
 
 
 func _on_game_ready() -> void:
-	spawn_at(spawn_enter_up_start, Human.STATE.AUTO_QUEUE)
+	spawn_at(spawn_enter_up_start, Human.STATE.AUTO_QUEUE, "TUTORIAL_A")
 	
 	state = STATE.START
 
@@ -80,12 +81,12 @@ func on_human_state_changed(human: Human.STATE):
 	if state == STATE.TUTORIAL_L and human == Human.STATE.AUTO_LEAVE:
 		state = STATE.TUTORIAL_L_END
 
-func human_will_despawn() -> void:
-	if state == STATE.TUTORIAL_L:
+func human_will_despawn(id: String) -> void:
+	if state == STATE.TUTORIAL_L and id == "TUTORIAL_L":
 		# they did not successfully jump out
-		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN)
+		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
 
 func _on_state_changed(new_state: GameManager.STATE) -> void:
 	if new_state == STATE.TUTORIAL_A_END:
-		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN)
+		spawn_at(spawn_inside_down, Human.STATE.WAIT_EXIT_DOWN, "TUTORIAL_L")
 		state = STATE.TUTORIAL_L

@@ -12,6 +12,9 @@ extends RigidBody3D
 
 @onready var jump_block_timer: Timer = $"Jump Block Timer"
 
+@onready var jump_timer: Timer = $"Jump Timer"
+
+
 @export var id: String
 
 signal state_changed(state: STATE)
@@ -87,14 +90,6 @@ func _physics_process(delta: float) -> void:
 	
 	if state == STATE.WAIT_ENTER_UP or state == STATE.WAIT_ENTER_DOWN or state == STATE.WAIT_EXIT_UP or state == STATE.WAIT_EXIT_DOWN:
 		return	
-	
-	if i % 25 != 0:
-		return
-
-	if !raycast_front.is_colliding() and state == STATE.AUTO_QUEUE:	
-		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))
-	elif !raycast_back.is_colliding() and state == STATE.AUTO_LEAVE:
-		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))
 
 
 
@@ -107,3 +102,10 @@ func _on_jump_block_timer_timeout() -> void:
 func _on_game_over_timer_timeout() -> void:
 	print("Game Over by wait time too long")
 	game_over.emit()
+
+
+func _on_jump_timer_timeout() -> void:
+	if !raycast_front.is_colliding() and state == STATE.AUTO_QUEUE:	
+		apply_impulse(Vector3(0, 100, -50), Vector3(0, 1, 0))
+	elif !raycast_back.is_colliding() and state == STATE.AUTO_LEAVE:
+		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))

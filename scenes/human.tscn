@@ -42,7 +42,13 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
+[node name="Jump Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Jump Block Timer" to="." method="_on_jump_block_timer_timeout"]
 [connection signal="timeout" from="Game Over Timer" to="." method="_on_game_over_timer_timeout"]
+[connection signal="timeout" from="Jump Timer" to="." method="_on_jump_timer_timeout"]

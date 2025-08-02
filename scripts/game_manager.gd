@@ -49,6 +49,7 @@ func _init() -> void:
 	human_scene = load("res://scenes/human.tscn")
 	state = STATE.START
 
+
 func _process(delta: float) -> void:
 	
 	if will_spawn_inside_up and spawn_inside_up.enabled:

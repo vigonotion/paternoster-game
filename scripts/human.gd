@@ -1,8 +1,6 @@
 class_name Human
 extends RigidBody3D
 
-@onready var game_manager: GameManager = %GameManager
-
 @onready var bubble: Node3D = $Bubble
 
 @onready var raycast_front: RayCast3D = $"Raycast Front"
@@ -17,6 +15,7 @@ extends RigidBody3D
 @export var id: String
 
 signal state_changed(state: STATE)
+signal game_over()
 
 enum STATE {
 	IDLE,
@@ -102,3 +101,9 @@ func _physics_process(delta: float) -> void:
 func _on_jump_block_timer_timeout() -> void:
 	blocked = false
 	set_label()
+
+
+
+func _on_game_over_timer_timeout() -> void:
+	print("Game Over by wait time too long")
+	game_over.emit()

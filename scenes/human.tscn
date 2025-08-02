@@ -37,6 +37,12 @@ target_position = Vector3(0, 1, 0)
 
 [node name="model" parent="Human Node" instance=ExtResource("1_swaxu")]
 
+[node name="Game Over Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Jump Block Timer" to="." method="_on_jump_block_timer_timeout"]
+[connection signal="timeout" from="Game Over Timer" to="." method="_on_game_over_timer_timeout"]

@@ -4,6 +4,7 @@ extends Control
 @onready var tutorial_text: RichTextLabel = $"Tutorial Text"
 @onready var key_binds: Control = $"Key Binds"
 @onready var score_label: Label = $Score
+@onready var game_over: Label = $"Game Over"
 
 
 
@@ -23,6 +24,7 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 	else:
 		tutorial_text.text = ""
 
+	game_over.visible = state == GameManager.STATE.GAME_OVER
 
 func _on_game_manager_score_updated(score: float) -> void:
 	score_label.text = str(score).pad_decimals(2) + " per minute"

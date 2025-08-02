@@ -22,6 +22,7 @@ signal state_changed(state: STATE)
 signal score_updated(score: float)
 
 enum STATE {
+	GAME_OVER,
 	INIT,
 	START,
 	TUTORIAL_A,
@@ -66,6 +67,22 @@ func _process(delta: float) -> void:
 		
 		score_per_minute = (transported_successfully * 10 - transported_failures) / time_elapsed
 
+	if Input.is_action_just_pressed("restart"):
+		restart()
+
+func restart():
+	state = STATE.GAME_PHASE_1
+	
+	time_elapsed = 0.0
+	transported_successfully = 1
+	transported_failures = 1
+	
+	for h in game.get_children():
+		if h is Human:
+			h.queue_free()
+			
+	Engine.time_scale = 1.0
+
 func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	var human: Human = human_scene.instantiate()
 	human.position = spawn_point.position
@@ -73,6 +90,7 @@ func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	human.id = id
 	
 	human.state_changed.connect(on_human_state_changed)
+	human.game_over.connect(game_over)
 	
 	if spawn_point == spawn_inside_up:
 		will_spawn_inside_up = human
@@ -120,6 +138,17 @@ func human_will_despawn(id: String, area_id: String) -> void:
 			transported_successfully += 1
 		else:
 			transported_failures += 1
+			
+		if transported_failures > 21:
+			game_over()
+			print("game over due to transported failures: ", transported_failures)
+
+func game_over():
+	if state == STATE.GAME_OVER:
+		return
+		
+	state = STATE.GAME_OVER
+	Engine.time_scale = 0
 
 func _on_state_changed(new_state: GameManager.STATE) -> void:
 	if new_state == STATE.TUTORIAL_A_END:

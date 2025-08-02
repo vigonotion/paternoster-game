@@ -16,8 +16,9 @@ func _ready() -> void:
 	var meshinstance = (model.get_child(0) as MeshInstance3D)
 	
 	var newMaterial = StandardMaterial3D.new()
-	newMaterial.albedo_color = Color(randf(), randf(), randf(), 1.0) #Set color of new material
-	
+	newMaterial.albedo_color = Color.from_rgba8(210, 59, 56)
+	newMaterial.albedo_color.ok_hsl_h = randf()
+	newMaterial.albedo_color.ok_hsl_l = randf_range(0.4, 0.8)
 	meshinstance.material_override = newMaterial
 	
 

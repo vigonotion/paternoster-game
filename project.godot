@@ -15,6 +15,11 @@ run/main_scene="uid://dwvhrv0g7o16x"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+
 [input]
 
 enter_up={

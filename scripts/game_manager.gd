@@ -32,7 +32,6 @@ func _init() -> void:
 	state = STATE.START
 
 func spawn_at(spawn_point: Node3D, state: Human.STATE):
-	print("spawning!", human_scene)
 	var human: Human = human_scene.instantiate()
 	human.position = spawn_point.position
 	human.state = state	

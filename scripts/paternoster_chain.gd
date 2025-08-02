@@ -16,7 +16,6 @@ const paternoster_height = 3
 		_init()
 
 func _init() -> void:
-	print("ch", curve_height)
 	curve = Curve3D.new() 
 	var halfcount = count / 2.0
 	var y_offset = -count / 4 * paternoster_height
@@ -51,6 +50,5 @@ func _ready() -> void:
 		var instance = scene.instantiate()
 		instance.offset = 1.0/paternoster_count + i/float(paternoster_count)
 		add_child(instance)
-		print("Add child")
 	
 	

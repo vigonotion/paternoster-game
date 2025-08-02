@@ -18,6 +18,9 @@ extends Node
 @export var transported_failures := 1
 @export var score_per_minute := 1.0
 
+@onready var background_music_player: AudioStreamPlayer = $"../Background Music Player"
+
+
 signal state_changed(state: STATE)
 signal score_updated(score: float)
 
@@ -112,6 +115,7 @@ func on_human_state_changed(human: Human.STATE):
 
 	if state == STATE.TUTORIAL_A and human == Human.STATE.IDLE:
 		state = STATE.TUTORIAL_A_END
+		background_music_player.play()
 		
 	if state == STATE.TUTORIAL_L and human == Human.STATE.AUTO_LEAVE:
 		state = STATE.TUTORIAL_L_END

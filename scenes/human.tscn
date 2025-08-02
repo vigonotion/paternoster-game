@@ -51,7 +51,7 @@ autostart = true
 
 [node name="Jump Sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_4otcn")
-volume_db = -24.767
+volume_db = -30.664
 
 [node name="Jump Long Sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_mayv3")

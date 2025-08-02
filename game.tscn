@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dwvhrv0g7o16x"]
+[gd_scene load_steps=28 format=3 uid="uid://dwvhrv0g7o16x"]
 
 [ext_resource type="PackedScene" uid="uid://jy20n6gfbpwx" path="res://scenes/floor.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://ckfyww51xguuo" path="res://scripts/paternoster_chain.gd" id="1_feb5d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bug5du6rqxtxh" path="res://scripts/hud.gd" id="4_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://b7kawna85o6xt" path="res://scenes/despawn_area.tscn" id="8_iotsf"]
 [ext_resource type="PackedScene" uid="uid://dk8thf5yov85q" path="res://scenes/hud.tscn" id="8_j5wjh"]
+[ext_resource type="AudioStream" uid="uid://drvo0kk8ab27b" path="res://music/Paternoster Soundtrack.mp3" id="11_mfdv2"]
 [ext_resource type="Script" uid="uid://b86iq3h55jnq5" path="res://scripts/toggleable_spawn.gd" id="13_lc2xo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
@@ -40,7 +41,7 @@ adjustment_saturation = 1.41
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7jktm"]
 
-[sub_resource type="Curve3D" id="Curve3D_hve3p"]
+[sub_resource type="Curve3D" id="Curve3D_iotsf"]
 closed = true
 _data = {
 "points": PackedVector3Array(0, -5, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 5, 0, 0, 6, 0, 0, 5, 0, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0, 0, 0, 0, 0, -5, 0, 3, -6, 0),
@@ -131,7 +132,7 @@ camera_attributes = SubResource("CameraAttributesPractical_7jktm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
 
 [node name="Paternoster Chain" type="Path3D" parent="."]
-curve = SubResource("Curve3D_hve3p")
+curve = SubResource("Curve3D_iotsf")
 script = ExtResource("1_feb5d")
 count = 10
 curve_height = 5.0
@@ -261,6 +262,9 @@ debug_color = Color(0.674893, 0.506642, 0, 0.42)
 
 [node name="Spawn Enter Down" type="Marker3D" parent="Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61717, 0.01, 7.31159)
+
+[node name="Background Music Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_mfdv2")
 
 [connection signal="ready" from="." to="GameManager" method="_on_game_ready"]
 [connection signal="score_updated" from="GameManager" to="CanvasLayer/HUD" method="_on_game_manager_score_updated"]

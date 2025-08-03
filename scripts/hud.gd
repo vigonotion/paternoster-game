@@ -17,11 +17,11 @@ extends Control
 func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 
 	if state == GameManager.STATE.TUTORIAL_A:
-		tutorial_text.text = "Press [A] if you think it's time to hop into the paternoster."
+		tutorial_text.text = "Press [img=40,top]res://icons/key a.png[/img] if you think it's time to hop into the paternoster."
 	elif state == GameManager.STATE.TUTORIAL_L:
-		tutorial_text.text = "You did it! Now, press [L] if you think it's time to hop out of the paternoster."
+		tutorial_text.text = "You did it! Now, press [img=40,top]res://icons/key l.png[/img] if you think it's time to hop out of the paternoster."
 	elif state == GameManager.STATE.TUTORIAL_DJ:
-		tutorial_text.text = "Just two keys more to learn: Press [D] to jump out of the left paternoster, and [J] to hop into the right one."
+		tutorial_text.text = "Just two keys more to learn: Press [img=40,top]res://icons/key d.png[/img] to jump out of the left paternoster, and [img=40,top]res://icons/key j.png[/img] to hop into the right one."
 	elif state == GameManager.STATE.TUTORIAL_END:
 		tutorial_text.text = "That's all! You get points for every passenger who reaches their destination. The faster they get there, the more points you get."
 	else:

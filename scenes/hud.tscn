@@ -45,6 +45,7 @@ offset_right = 300.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "Long tutorial text that will be displayed here"
 
 [node name="Panel" type="Panel" parent="."]

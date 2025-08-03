@@ -56,13 +56,13 @@ func _ready() -> void:
 	
 func set_label():
 	if state == STATE.WAIT_ENTER_UP:
-		label.text = "[A]"
+		label.text = "A"
 	elif state == STATE.WAIT_ENTER_DOWN:
-		label.text = "[J]"
+		label.text = "J"
 	elif state == STATE.WAIT_EXIT_UP:
-		label.text = "[D]"
+		label.text = "D"
 	elif state == STATE.WAIT_EXIT_DOWN:
-		label.text = "[L]"
+		label.text = "L"
 	else:
 		label.text = ""
 		

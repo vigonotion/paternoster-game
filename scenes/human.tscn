@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bknegj0q74oa4"]
+[gd_scene load_steps=7 format=3 uid="uid://bknegj0q74oa4"]
 
 [ext_resource type="Script" uid="uid://b43w3ivqdcmdj" path="res://scripts/human.gd" id="1_cwf78"]
 [ext_resource type="PackedScene" uid="uid://dp0o35tb2nvy8" path="res://blendfiles/human.blend" id="1_swaxu"]
+[ext_resource type="FontFile" uid="uid://dc1abd2gw0o2h" path="res://fonts/MozillaHeadline-Bold.ttf" id="2_denma"]
 [ext_resource type="AudioStream" uid="uid://dybfae4fe7uri" path="res://sfx/jump.wav" id="3_4otcn"]
 [ext_resource type="AudioStream" uid="uid://b3qosuu7841sq" path="res://sfx/jump_long.wav" id="4_mayv3"]
 
@@ -23,6 +24,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55358, 0)
 billboard = 1
 render_priority = 1
 text = "IDLE"
+font = ExtResource("2_denma")
+font_size = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609001, 0)

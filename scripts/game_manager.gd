@@ -186,7 +186,12 @@ func _on_spawn_timer_timeout() -> void:
 	if state < STATE.TUTORIAL_END:
 		return
 		
-	var choice = randi_range(0, 4)
+	var choices = 8
+	
+	if transported_successfully > 20:
+		choices = 4
+		
+	var choice = randi_range(0, choices)
 	
 	if choice == 0:
 		spawn_at(spawn_enter_up, Human.STATE.AUTO_QUEUE, "LOOP_ENTER_UP")

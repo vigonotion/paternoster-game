@@ -13,6 +13,8 @@ config_version=5
 config/name="Paternoster"
 run/main_scene="uid://dwvhrv0g7o16x"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/fullsize=false
+boot_splash/image="uid://0wu5fwqwkqoc"
 config/icon="res://icon.svg"
 
 [display]

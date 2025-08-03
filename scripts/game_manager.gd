@@ -18,6 +18,8 @@ extends Node
 @export var transported_failures := 0
 
 @onready var background_music_player: AudioStreamPlayer = $"../Background Music Player"
+@onready var rattling_player: AudioStreamPlayer3D = $"../Rattling Player"
+
 
 @onready var hud: Hud = $"../CanvasLayer/HUD"
 
@@ -93,6 +95,7 @@ func restart():
 	Engine.time_scale = 1.0
 	score_updated.emit(0)
 	background_music_player.play()
+	rattling_player.play()
 
 func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	var human: Human = human_scene.instantiate()
@@ -166,6 +169,7 @@ func game_over():
 		
 	state = STATE.GAME_OVER
 	Engine.time_scale = 0
+	rattling_player.stop()
 
 func _on_state_changed(new_state: GameManager.STATE) -> void:
 	if new_state == STATE.TUTORIAL_A_END:

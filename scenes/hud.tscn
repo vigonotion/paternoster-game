@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://b3p6go5ab3gsh" path="res://icons/passenger.png" id="1_ahhtf"]
 [ext_resource type="Texture2D" uid="uid://c2yr4end4tig1" path="res://icons/passenger Missed Floor.png" id="2_oo0fn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0fn"]
-bg_color = Color(0.1, 0.1, 0.1, 0.658824)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
 bg_color = Color(0.18, 0.04725, 0.045, 0.67451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0fn"]
+bg_color = Color(0.1, 0.1, 0.1, 0.658824)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -33,12 +33,6 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Long tutorial text that will be displayed here"
-
-[node name="Score Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 65.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_oo0fn")
 
 [node name="Game Over Panel" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -90,6 +84,12 @@ unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Score Panel" type="Panel" parent="Score Banner"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 65.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oo0fn")
 
 [node name="Control" type="Control" parent="Score Banner"]
 anchors_preset = 0

@@ -66,6 +66,7 @@ func _process(delta: float) -> void:
 		
 	if state < STATE.GAME_PHASE_1 and Input.is_action_just_pressed("skip_tutorial"):
 		state = STATE.GAME_PHASE_1
+		background_music_player.play()
 		
 	if state == STATE.GAME_PHASE_1:
 		time_elapsed += delta
@@ -91,6 +92,7 @@ func restart():
 			
 	Engine.time_scale = 1.0
 	score_updated.emit(0)
+	background_music_player.play()
 
 func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	var human: Human = human_scene.instantiate()
@@ -186,9 +188,12 @@ func _on_spawn_timer_timeout() -> void:
 	if state < STATE.TUTORIAL_END:
 		return
 		
-	var choices = 8
+	var choices = 16
 	
 	if transported_successfully > 20:
+		choices = 8
+		
+	if transported_successfully > 80:
 		choices = 4
 		
 	var choice = randi_range(0, choices)

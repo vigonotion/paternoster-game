@@ -114,6 +114,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Spawn Timer" type="Timer" parent="GameManager"]
+wait_time = 0.5
 autostart = true
 
 [node name="Score Timer" type="Timer" parent="GameManager"]

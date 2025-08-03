@@ -90,6 +90,7 @@ func restart():
 			h.queue_free()
 			
 	Engine.time_scale = 1.0
+	score_updated.emit(0)
 
 func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	var human: Human = human_scene.instantiate()
@@ -148,7 +149,7 @@ func human_will_despawn(id: String, area_id: String) -> void:
 		else:
 			transported_failures += 1
 			
-		if transported_failures > 21:
+		if transported_failures > 20:
 			game_over()
 			print("game over due to transported failures: ", transported_failures)
 			hud.game_over_reason = "Too many passengers missed their floor."

@@ -6,9 +6,15 @@ extends Control
 @onready var score_label: Label = %Score
 @onready var failures_label: Label = %Failures
 
-@onready var game_over: Label = $"Game Over"
+@onready var game_over_panel: Panel = %"Game Over Panel"
+@onready var game_over_reason_label: RichTextLabel = %"Game Over Reason"
 
-@export var game_over_reason: String = "?"
+
+@export var game_over_reason: String = "?":
+	set(r):
+		game_over_reason = r
+		if game_over_reason_label:
+			game_over_reason_label.text = r + "\n\n" + "You transported " +str(transported_successfully)+ " passengers." + "\n\nPress [img=40,top]res://icons/key r.png[/img] to play another round."
 
 @export var time_elapsed := 0.0
 @export var transported_successfully := 0
@@ -27,7 +33,8 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 	else:
 		tutorial_text.text = ""
 
-	game_over.visible = state == GameManager.STATE.GAME_OVER
+	game_over_panel.visible = state == GameManager.STATE.GAME_OVER
+	
 
 func _on_game_manager_score_updated(score: float) -> void:
 	score_label.text = str(transported_successfully)

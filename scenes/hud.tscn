@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk8thf5yov85q"]
+[gd_scene load_steps=5 format=3 uid="uid://dk8thf5yov85q"]
 
 [ext_resource type="Texture2D" uid="uid://b3p6go5ab3gsh" path="res://icons/passenger.png" id="1_ahhtf"]
 [ext_resource type="Texture2D" uid="uid://c2yr4end4tig1" path="res://icons/passenger Missed Floor.png" id="2_oo0fn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0fn"]
 bg_color = Color(0.1, 0.1, 0.1, 0.658824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
+bg_color = Color(0.18, 0.04725, 0.045, 0.67451)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -13,24 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Game Over" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -65.5
-offset_right = 132.0
-offset_bottom = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.7207, 0.180675, 0.151715, 1)
-theme_override_font_sizes/font_size = 46
-text = "GAME OVER"
 
 [node name="Tutorial Text" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -48,11 +33,55 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Long tutorial text that will be displayed here"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Score Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 65.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oo0fn")
+
+[node name="Game Over Panel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ysmq")
+
+[node name="Game Over" type="Label" parent="Game Over Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.5
+offset_top = -124.0
+offset_right = 292.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7207, 0.180675, 0.151715, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "GAME OVER"
+
+[node name="Game Over Reason" type="RichTextLabel" parent="Game Over Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -344.0
+offset_right = 300.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Game Over Reason will be shown here that actually can be really long."
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0

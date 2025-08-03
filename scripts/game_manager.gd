@@ -73,6 +73,10 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("restart"):
 		restart()
+		
+	if Input.is_action_just_pressed("debug_game_over"):
+		hud.game_over_reason = "The debug key triggered the game over screen."
+		game_over()
 
 func restart():
 	state = STATE.GAME_PHASE_1

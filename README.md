@@ -1,28 +1,9 @@
-# paternoster-gamee
+# Paternoster
+
+Part of the GMTK Game Jam 2025
+Theme: Loop
+
+![Cover](<itch cover.png>)
 
 
-## Resources
-
-- Fonts
-    - Boecklins Universe
-    - Mozilla Headline
-
-- Textures:
-    - https://unsplash.com/de/fotos/brauner-und-weisser-teppich-cyp7GkqF6b8
-    - https://unsplash.com/de/fotos/brauner-und-schwarzer-teppich-M5hivO17H5M
-
-- Sound Effects
-    - Jump sounds: Made using `sfxr`
-    - Rattling sound based on: https://freesound.org/people/HECKFRICKER/sounds/730438/
-
-- Music
-    - Made by me using FL Studio, its plugins and free samples from their cloud
-    - Chord progression generated using https://www.onemotion.com/chord-player/
-
-- Tools
-    - Godot
-    - Aseprite (only for some icons)
-    - Affinity Designer 2
-    - FL Studio
-    - VS Code
-    - Audacity
+View this game on itch: https://itch.io/jam/gmtk-2025/rate/3768472

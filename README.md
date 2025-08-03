@@ -7,7 +7,9 @@
     - Boecklins Universe
     - Mozilla Headline
 
-- Textures: https://unsplash.com/de/fotos/brauner-und-weisser-teppich-cyp7GkqF6b8
+- Textures:
+    - https://unsplash.com/de/fotos/brauner-und-weisser-teppich-cyp7GkqF6b8
+    - https://unsplash.com/de/fotos/brauner-und-schwarzer-teppich-M5hivO17H5M
 
 - Sound Effects
     - Jump sounds: Made using `sfxr`

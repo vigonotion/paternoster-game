@@ -9,6 +9,7 @@ extends Control
 @onready var game_over_panel: Panel = %"Game Over Panel"
 @onready var game_over_reason_label: RichTextLabel = %"Game Over Reason"
 @onready var score_banner: Control = %"Score Banner"
+@onready var menu: Control = %Menu
 
 
 @export var game_over_reason: String = "?":
@@ -34,9 +35,12 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 	else:
 		tutorial_text.text = ""
 
+	menu.visible = state == GameManager.STATE.MENU
 	game_over_panel.visible = state == GameManager.STATE.GAME_OVER
 	
 	score_banner.visible = state >= GameManager.STATE.TUTORIAL_END
+	
+	print("Current State", state)
 	
 
 func _on_game_manager_score_updated(score: float) -> void:

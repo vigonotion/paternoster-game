@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk8thf5yov85q"]
+[gd_scene load_steps=6 format=3 uid="uid://dk8thf5yov85q"]
 
 [ext_resource type="Texture2D" uid="uid://b3p6go5ab3gsh" path="res://icons/passenger.png" id="1_ahhtf"]
 [ext_resource type="Texture2D" uid="uid://c2yr4end4tig1" path="res://icons/passenger Missed Floor.png" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://0wu5fwqwkqoc" path="res://icons/paternoster logo.png" id="3_5ysmq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
 bg_color = Color(0.18, 0.04725, 0.045, 0.67451)
@@ -140,3 +141,51 @@ offset_right = 155.0
 offset_bottom = 36.0
 theme_override_font_sizes/font_size = 32
 text = "20/20"
+
+[node name="Menu" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score Panel2" type="Panel" parent="Menu"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oo0fn")
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 266.0
+offset_top = 48.0
+offset_right = 1066.0
+offset_bottom = 298.0
+grow_horizontal = 2
+scale = Vector2(0.725, 0.725)
+texture = ExtResource("3_5ysmq")
+
+[node name="Tutorial Text2" type="RichTextLabel" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 81.0
+offset_top = 263.0
+offset_right = 1031.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Before the elevator was invented, people used the Paternoster to travel vertically. The cabins travel around in a [wave amp=20.0 freq=5.0 connected=1]loop[/wave] all day long.
+
+Some say it was dangerous, but surely you would have done just fine.
+
+Press [img=40,top]res://icons/key a.png[/img] to start the game."
+horizontal_alignment = 1

@@ -20,6 +20,8 @@ extends Node
 @onready var background_music_player: AudioStreamPlayer = $"../Background Music Player"
 @onready var rattling_player: AudioStreamPlayer3D = $"../Rattling Player"
 
+@onready var main_camera: Camera3D = $"../Main Camera"
+@onready var init_camera: Camera3D = $"../Init Camera"
 
 @onready var hud: Hud = $"../CanvasLayer/HUD"
 
@@ -28,6 +30,7 @@ signal state_changed(state: STATE)
 signal score_updated(score: float)
 
 enum STATE {
+	MENU,
 	GAME_OVER,
 	INIT,
 	START,
@@ -40,7 +43,7 @@ enum STATE {
 	GAME_PHASE_1
 }
 
-@export var state: STATE = STATE.INIT:
+var state: STATE = STATE.MENU:
 	set(s):
 		state = s
 		print("new state:", state)
@@ -53,7 +56,7 @@ var will_spawn_inside_down: Human
 
 func _init() -> void:
 	human_scene = load("res://scenes/human.tscn")
-	state = STATE.START
+	state = STATE.INIT
 
 
 func _process(delta: float) -> void:
@@ -66,13 +69,16 @@ func _process(delta: float) -> void:
 		game.add_child(will_spawn_inside_down)
 		will_spawn_inside_down = null
 		
-	if state < STATE.GAME_PHASE_1 and Input.is_action_just_pressed("skip_tutorial"):
+	if state > STATE.GAME_OVER and state < STATE.GAME_PHASE_1 and Input.is_action_just_pressed("skip_tutorial"):
 		state = STATE.GAME_PHASE_1
 		background_music_player.play()
 		
 	if state == STATE.GAME_PHASE_1:
 		time_elapsed += delta
 		
+		
+	if state == STATE.MENU and Input.is_action_just_pressed("enter_up"):
+		start_tutorial()
 
 	if Input.is_action_just_pressed("restart"):
 		restart()
@@ -113,11 +119,13 @@ func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	else:
 		game.add_child(human)
 
+func start_tutorial() -> void:
+	spawn_at(spawn_enter_up_start, Human.STATE.AUTO_QUEUE, "TUTORIAL_A")
+	state = STATE.START
+	main_camera.current = true
 
 func _on_game_ready() -> void:
-	spawn_at(spawn_enter_up_start, Human.STATE.AUTO_QUEUE, "TUTORIAL_A")
-	
-	state = STATE.START
+	state = STATE.MENU
 
 func on_human_state_changed(human: Human.STATE):
 	if state == STATE.START and human == Human.STATE.WAIT_ENTER_UP:

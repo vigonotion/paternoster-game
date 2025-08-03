@@ -80,128 +80,128 @@ debug_color = Color(0, 0.650602, 0.0814695, 0.42)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 3.9229, 1.47954)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 3.9229, 1.47954)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 3.9229, 1.47954)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 3.9229, 1.47954)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 3.9229, 4.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 3.9229, 4.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 3.9229, 4.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 3.9229, 4.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 3.9229, 4.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 3.9229, 4.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D8" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 3.9229, 4.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 3.9229, 4.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D9" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 3.9229, 7.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 3.9229, 7.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D10" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 3.9229, 7.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 3.9229, 7.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D11" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 3.9229, 7.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 3.9229, 7.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D12" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 3.9229, 7.47955)
-light_energy = 3.147
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 3.9229, 7.47954)
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D13" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 3.9229, 10.4795)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D14" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 3.9229, 10.4795)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D15" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 3.9229, 10.4795)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64
 
 [node name="SpotLight3D16" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.5, 3.9229, 10.4795)
-light_energy = 3.147
+light_energy = 0.634
 shadow_enabled = true
 spot_range = 5.85619
-spot_attenuation = 2.0
-spot_angle = 64.2603
+spot_attenuation = 1.65
+spot_angle = 70.64

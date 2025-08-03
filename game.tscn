@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dwvhrv0g7o16x"]
+[gd_scene load_steps=28 format=3 uid="uid://dwvhrv0g7o16x"]
 
 [ext_resource type="PackedScene" uid="uid://jy20n6gfbpwx" path="res://scenes/floor.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://ckfyww51xguuo" path="res://scripts/paternoster_chain.gd" id="1_feb5d"]
@@ -13,26 +13,14 @@
 [ext_resource type="AudioStream" uid="uid://dltjwiw6bb351" path="res://sfx/rattling.ogg" id="12_iotsf"]
 [ext_resource type="Script" uid="uid://b86iq3h55jnq5" path="res://scripts/toggleable_spawn.gd" id="13_lc2xo"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iotsf"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_lc2xo"]
-sky_material = SubResource("ProceduralSkyMaterial_iotsf")
-
-[sub_resource type="Environment" id="Environment_215e1"]
+[sub_resource type="Environment" id="Environment_iotsf"]
 background_mode = 1
-sky = SubResource("Sky_lc2xo")
 ambient_light_source = 3
-ambient_light_color = Color(0.366571, 0.591169, 0.895673, 1)
-tonemap_mode = 4
-tonemap_exposure = 1.37
+ambient_light_color = Color(0.510455, 0.523688, 0.53192, 1)
+ambient_light_energy = 0.96
+tonemap_mode = 2
 glow_enabled = true
-glow_intensity = 3.46
-glow_strength = 1.35
-adjustment_enabled = true
-adjustment_brightness = 1.25
-adjustment_saturation = 1.39
+glow_intensity = 2.58
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
 shader = ExtResource("2_vef74")
@@ -84,7 +72,7 @@ radius = 0.124428
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_215e1")
+environment = SubResource("Environment_iotsf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

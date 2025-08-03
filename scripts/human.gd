@@ -1,8 +1,6 @@
 class_name Human
 extends RigidBody3D
 
-@onready var bubble: Node3D = $Bubble
-
 @onready var raycast_front: RayCast3D = $"Raycast Front"
 @onready var raycast_back: RayCast3D = $"Raycast Back"
 

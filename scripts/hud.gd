@@ -39,9 +39,7 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 	game_over_panel.visible = state == GameManager.STATE.GAME_OVER
 	
 	score_banner.visible = state >= GameManager.STATE.TUTORIAL_END
-	
-	print("Current State", state)
-	
+		
 
 func _on_game_manager_score_updated(score: float) -> void:
 	score_label.text = str(transported_successfully)

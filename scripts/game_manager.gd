@@ -46,7 +46,6 @@ enum STATE {
 var state: STATE = STATE.MENU:
 	set(s):
 		state = s
-		print("new state:", state)
 		state_changed.emit(s)
 
 var human_scene
@@ -164,7 +163,6 @@ func human_will_despawn(id: String, area_id: String) -> void:
 			
 		if transported_failures > 20:
 			game_over()
-			print("game over due to transported failures: ", transported_failures)
 			hud.game_over_reason = "Too many passengers missed their floor."
 
 func game_over_wait():

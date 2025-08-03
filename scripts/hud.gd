@@ -1,3 +1,4 @@
+class_name Hud
 extends Control
 
 @onready var debug_state: Label = $"Debug State"
@@ -6,6 +7,7 @@ extends Control
 @onready var score_label: Label = $Score
 @onready var game_over: Label = $"Game Over"
 
+@export var game_over_reason: String = "?"
 
 
 func _on_game_manager_state_changed(state: GameManager.STATE) -> void:

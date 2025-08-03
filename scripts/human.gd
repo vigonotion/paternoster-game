@@ -106,8 +106,8 @@ func _on_jump_block_timer_timeout() -> void:
 
 
 func _on_game_over_timer_timeout() -> void:
-	print("Game Over by wait time too long")
-	game_over.emit()
+	if state == STATE.AUTO_QUEUE:
+		game_over.emit()
 
 
 func _on_jump_timer_timeout() -> void:

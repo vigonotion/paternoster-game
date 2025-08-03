@@ -20,6 +20,8 @@ extends Node
 
 @onready var background_music_player: AudioStreamPlayer = $"../Background Music Player"
 
+@onready var hud: Hud = $"../CanvasLayer/HUD"
+
 
 signal state_changed(state: STATE)
 signal score_updated(score: float)
@@ -94,7 +96,7 @@ func spawn_at(spawn_point: Node3D, state: Human.STATE, id: String):
 	human.id = id
 	
 	human.state_changed.connect(on_human_state_changed)
-	human.game_over.connect(game_over)
+	human.game_over.connect(game_over_wait)
 	
 	if spawn_point == spawn_inside_up:
 		will_spawn_inside_up = human
@@ -147,6 +149,11 @@ func human_will_despawn(id: String, area_id: String) -> void:
 		if transported_failures > 21:
 			game_over()
 			print("game over due to transported failures: ", transported_failures)
+			hud.game_over_reason = "Too many passengers missed their floor."
+
+func game_over_wait():
+	hud.game_over_reason = "A passenger waited more than 60 seconds in the queue."
+	game_over()
 
 func game_over():
 	if state == STATE.GAME_OVER:

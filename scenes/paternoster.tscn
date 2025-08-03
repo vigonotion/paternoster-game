@@ -36,7 +36,7 @@ shape = SubResource("BoxShape3D_b0cej")
 [node name="paternoster" parent="Paternoster" instance=ExtResource("1_af82s")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Paternoster"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.35914, 0)
+transform = Transform3D(1, 0, 0, 0, 0.778342, 0.627841, 0, -0.627841, 0.778342, 0, 2.35914, 0.72147)
 light_energy = 1.12
 spot_range = 3.22525
 spot_angle = 53.6427
@@ -46,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 light_energy = 0.647
 light_indirect_energy = 2.756
 light_volumetric_fog_energy = 2.476
-omni_range = 2.0
+omni_range = 0.966665
 omni_attenuation = 0.9
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]

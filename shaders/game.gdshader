@@ -20,6 +20,6 @@ void fragment(){
       new_color = palette_color;
     }
   }
-
-  COLOR = mix(color, new_color, .5f);
+	COLOR = color;
+  //COLOR = mix(color, new_color, .5f);
 }

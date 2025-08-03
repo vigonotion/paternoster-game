@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bknegj0q74oa4"]
+[gd_scene load_steps=8 format=3 uid="uid://bknegj0q74oa4"]
 
 [ext_resource type="Script" uid="uid://b43w3ivqdcmdj" path="res://scripts/human.gd" id="1_cwf78"]
 [ext_resource type="PackedScene" uid="uid://dp0o35tb2nvy8" path="res://blendfiles/human.blend" id="1_swaxu"]
@@ -9,6 +9,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_swaxu"]
 height = 1.20727
 radius = 0.190918
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_denma"]
+size = Vector3(0.555664, 1.51636, 0.508789)
 
 [node name="Human" type="RigidBody3D"]
 mass = 60.0
@@ -62,8 +65,17 @@ stream = ExtResource("4_mayv3")
 volume_db = -12.76
 bus = &"SFX"
 
+[node name="NoSpawn" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NoSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.619263, 0)
+shape = SubResource("BoxShape3D_denma")
+debug_color = Color(0.84505, 0.00101132, 0.911601, 0.42)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Jump Block Timer" to="." method="_on_jump_block_timer_timeout"]
 [connection signal="timeout" from="Game Over Timer" to="." method="_on_game_over_timer_timeout"]
 [connection signal="timeout" from="Jump Timer" to="." method="_on_jump_timer_timeout"]
+[connection signal="body_entered" from="NoSpawn" to="." method="_on_no_spawn_body_entered"]
+[connection signal="body_exited" from="NoSpawn" to="." method="_on_no_spawn_body_exited"]

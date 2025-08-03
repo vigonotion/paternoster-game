@@ -60,11 +60,11 @@ func _init() -> void:
 
 func _process(delta: float) -> void:
 	
-	if will_spawn_inside_up and spawn_inside_up.enabled:
+	if will_spawn_inside_up and spawn_inside_up.is_enabled():
 		game.add_child(will_spawn_inside_up)
 		will_spawn_inside_up = null
 	
-	if will_spawn_inside_down and spawn_inside_down.enabled:
+	if will_spawn_inside_down and spawn_inside_down.is_enabled():
 		game.add_child(will_spawn_inside_down)
 		will_spawn_inside_down = null
 		
@@ -205,6 +205,9 @@ func _on_spawn_timer_timeout() -> void:
 		
 	if transported_successfully > 80:
 		choices = 4
+	
+	if transported_successfully > 100:
+		choices = 3
 		
 	var choice = randi_range(0, choices)
 	

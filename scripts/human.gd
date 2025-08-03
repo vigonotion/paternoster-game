@@ -115,3 +115,17 @@ func _on_jump_timer_timeout() -> void:
 	elif !raycast_back.is_colliding() and state == STATE.AUTO_LEAVE:
 		apply_impulse(Vector3(0, 100, 50), Vector3(0, 1, 0))
 		jump_sfx.play()
+
+
+
+
+func _on_no_spawn_body_entered(body: Node3D) -> void:
+	if body is ToggleableSpawn:
+		print("human in spawn area")
+		body.human_there = true
+
+
+func _on_no_spawn_body_exited(body: Node3D) -> void:
+	if body is ToggleableSpawn:
+		print("human out spawn area")
+		body.human_there = false

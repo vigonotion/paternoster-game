@@ -38,10 +38,6 @@ func _init() -> void:
 	curve.closed = true
 
 func _ready() -> void:
-	# remove placeholder
-	for c in get_children():
-		c.queue_free()
-		
 	var scene = load("res://scenes/chainlink.tscn")
 	
 	var paternoster_count = count + 4

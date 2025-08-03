@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://djke8oc1oht24" path="res://scripts/spawnable.gd" id="2_vmk0h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_af82s"]
-size = Vector3(1.50195, 0.2005, 1.901)
+size = Vector3(1.50195, 0.2005, 1.85382)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0cej"]
-size = Vector3(1.50195, 0.516144, 1.901)
+size = Vector3(1.50195, 0.615791, 1.89658)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmk0h"]
 size = Vector3(1.95923, 3.02664, 0.50293)
@@ -24,11 +24,11 @@ size = Vector3(1.35352, 1.07178, 1.89307)
 [node name="AnimatableBody3D" type="AnimatableBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099823, 0.0574341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099823, 0.0338443)
 shape = SubResource("BoxShape3D_af82s")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76234, 0.0574341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81216, 0.0552219)
 shape = SubResource("BoxShape3D_b0cej")
 
 [node name="Paternoster" type="Node3D" parent="."]

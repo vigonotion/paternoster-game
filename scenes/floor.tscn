@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://jy20n6gfbpwx"]
+[gd_scene load_steps=11 format=3 uid="uid://jy20n6gfbpwx"]
 
 [ext_resource type="PackedScene" uid="uid://co7r080a1u20x" path="res://blendfiles/floor.blend" id="1_ukw5w"]
+[ext_resource type="PackedScene" uid="uid://b4jmw7a5r6eev" path="res://blendfiles/planter.blend" id="2_kuqtn"]
+[ext_resource type="PackedScene" uid="uid://cm306h0i2225u" path="res://blendfiles/painting.blend" id="3_whr1e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ukw5w"]
 size = Vector3(11.243, 0.5, 10.2482)
@@ -26,6 +28,12 @@ size = Vector3(0.0250244, 4.37012, 10.5059)
 [node name="Floor" type="Node3D"]
 
 [node name="floor" parent="." instance=ExtResource("1_ukw5w")]
+
+[node name="planter" parent="." instance=ExtResource("2_kuqtn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.393513, 0, 0.44397)
+
+[node name="painting" parent="." instance=ExtResource("3_whr1e")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.24524, 3.66661)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

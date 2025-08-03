@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="uid://6smobisy6g2u"
+
 [input]
 
 enter_up={

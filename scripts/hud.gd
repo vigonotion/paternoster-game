@@ -4,11 +4,17 @@ extends Control
 @onready var debug_state: Label = $"Debug State"
 @onready var tutorial_text: RichTextLabel = $"Tutorial Text"
 @onready var key_binds: Control = $"Key Binds"
+
 @onready var score_label: Label = $Score
+@onready var failures_label: Label = $Failures
+
 @onready var game_over: Label = $"Game Over"
 
 @export var game_over_reason: String = "?"
 
+@export var time_elapsed := 0.0
+@export var transported_successfully := 0
+@export var transported_failures := 0
 
 func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 	debug_state.text = "[STATE] " + GameManager.STATE.keys()[state]
@@ -29,4 +35,5 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 	game_over.visible = state == GameManager.STATE.GAME_OVER
 
 func _on_game_manager_score_updated(score: float) -> void:
-	score_label.text = str(score).pad_decimals(2) + " per minute"
+	score_label.text = str(transported_successfully)
+	failures_label.text = str(transported_failures)

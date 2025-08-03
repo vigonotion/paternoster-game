@@ -14,9 +14,8 @@ extends Node
 @onready var tutorial_end_timer: Timer = $"Tutorial End Timer"
 
 @export var time_elapsed := 0.0
-@export var transported_successfully := 1
-@export var transported_failures := 1
-@export var score_per_minute := 1.0
+@export var transported_successfully := 0
+@export var transported_failures := 0
 
 @onready var background_music_player: AudioStreamPlayer = $"../Background Music Player"
 
@@ -71,7 +70,6 @@ func _process(delta: float) -> void:
 	if state == STATE.GAME_PHASE_1:
 		time_elapsed += delta
 		
-		score_per_minute = (transported_successfully * 10 - transported_failures) / time_elapsed
 
 	if Input.is_action_just_pressed("restart"):
 		restart()
@@ -200,4 +198,8 @@ func _on_spawn_timer_timeout() -> void:
 
 
 func _on_score_timer_timeout() -> void:
-	score_updated.emit(score_per_minute)
+	score_updated.emit(0)
+	
+	hud.time_elapsed = time_elapsed
+	hud.transported_successfully = transported_successfully
+	hud.transported_failures = transported_failures

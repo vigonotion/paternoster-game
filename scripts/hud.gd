@@ -1,12 +1,10 @@
 class_name Hud
 extends Control
 
-@onready var debug_state: Label = $"Debug State"
 @onready var tutorial_text: RichTextLabel = $"Tutorial Text"
-@onready var key_binds: Control = $"Key Binds"
 
-@onready var score_label: Label = $Score
-@onready var failures_label: Label = $Failures
+@onready var score_label: Label = %Score
+@onready var failures_label: Label = %Failures
 
 @onready var game_over: Label = $"Game Over"
 
@@ -17,9 +15,6 @@ extends Control
 @export var transported_failures := 0
 
 func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
-	debug_state.text = "[STATE] " + GameManager.STATE.keys()[state]
-
-	key_binds.visible = state == GameManager.STATE.TUTORIAL_L_END # TODO on tutorial end
 
 	if state == GameManager.STATE.TUTORIAL_A:
 		tutorial_text.text = "Press [A] if you think it's time to hop into the paternoster."
@@ -36,4 +31,4 @@ func _on_game_manager_state_changed(state: GameManager.STATE) -> void:
 
 func _on_game_manager_score_updated(score: float) -> void:
 	score_label.text = str(transported_successfully)
-	failures_label.text = str(transported_failures)
+	failures_label.text = str(transported_failures) + "/20"

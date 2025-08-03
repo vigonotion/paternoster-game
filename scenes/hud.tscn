@@ -29,6 +29,7 @@ offset_top = -200.0
 offset_right = 300.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Long tutorial text that will be displayed here"
@@ -41,6 +42,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oo0fn")
 
 [node name="Game Over Panel" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -83,14 +85,20 @@ bbcode_enabled = true
 text = "Game Over Reason will be shown here that actually can be really long."
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="Score Banner" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="Score Banner"]
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 56.0
 offset_bottom = 56.0
 
-[node name="Icon Passenger" type="TextureRect" parent="Control"]
+[node name="Icon Passenger" type="TextureRect" parent="Score Banner/Control"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 128.0
@@ -98,7 +106,7 @@ offset_bottom = 128.0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_ahhtf")
 
-[node name="Score" type="Label" parent="Control"]
+[node name="Score" type="Label" parent="Score Banner/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 32.0
@@ -108,14 +116,14 @@ offset_bottom = 36.0
 theme_override_font_sizes/font_size = 32
 text = "20000"
 
-[node name="Control2" type="Control" parent="."]
+[node name="Control2" type="Control" parent="Score Banner"]
 anchors_preset = 0
 offset_left = 176.0
 offset_top = 16.0
 offset_right = 216.0
 offset_bottom = 56.0
 
-[node name="Icon Passenger" type="TextureRect" parent="Control2"]
+[node name="Icon Passenger" type="TextureRect" parent="Score Banner/Control2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_right = 128.0
@@ -123,7 +131,7 @@ offset_bottom = 128.0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_oo0fn")
 
-[node name="Failures" type="Label" parent="Control2"]
+[node name="Failures" type="Label" parent="Score Banner/Control2"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 32.0

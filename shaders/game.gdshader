@@ -21,5 +21,6 @@ void fragment(){
     }
   }
 
+	COLOR = color;
   COLOR = mix(color, new_color, .4f);
 }

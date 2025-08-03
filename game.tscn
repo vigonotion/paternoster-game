@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dwvhrv0g7o16x"]
+[gd_scene load_steps=30 format=3 uid="uid://dwvhrv0g7o16x"]
 
 [ext_resource type="PackedScene" uid="uid://jy20n6gfbpwx" path="res://scenes/floor.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://ckfyww51xguuo" path="res://scripts/paternoster_chain.gd" id="1_feb5d"]
@@ -13,34 +13,31 @@
 [ext_resource type="AudioStream" uid="uid://dltjwiw6bb351" path="res://sfx/rattling.ogg" id="12_iotsf"]
 [ext_resource type="Script" uid="uid://b86iq3h55jnq5" path="res://scripts/toggleable_spawn.gd" id="13_lc2xo"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iotsf"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_lc2xo"]
+sky_material = SubResource("ProceduralSkyMaterial_iotsf")
+
+[sub_resource type="Environment" id="Environment_215e1"]
+background_mode = 1
+sky = SubResource("Sky_lc2xo")
+ambient_light_source = 3
+tonemap_mode = 4
+tonemap_exposure = 1.37
+glow_enabled = true
+glow_intensity = 3.46
+glow_strength = 1.35
+adjustment_enabled = true
+adjustment_brightness = 1.25
+adjustment_saturation = 1.39
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
 shader = ExtResource("2_vef74")
 shader_parameter/palette = ExtResource("2_hve3p")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vef74"]
-
-[sub_resource type="Environment" id="Environment_e2o6t"]
-background_mode = 1
-background_color = Color(1, 1, 1, 1)
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.22
-tonemap_mode = 2
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_read_sky_light = false
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 0.62
-glow_blend_mode = 0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0372
-adjustment_enabled = true
-adjustment_brightness = 1.2
-adjustment_contrast = 1.04
-adjustment_saturation = 1.41
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7jktm"]
 
 [sub_resource type="Curve3D" id="Curve3D_iotsf"]
 closed = true
@@ -85,6 +82,9 @@ radius = 0.124428
 
 [node name="Game" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_215e1")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -127,10 +127,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51666, 2.02882, 5.10167)
 
 [node name="Main Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.951487, -0.0409972, 0.304946, 7.82223e-10, 0.991084, 0.133242, -0.307689, -0.126778, 0.943003, 1.40772, 2.82295, 7.89757)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_e2o6t")
-camera_attributes = SubResource("CameraAttributesPractical_7jktm")
 
 [node name="Floor" parent="." instance=ExtResource("1_e2o6t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0, 1.25)
